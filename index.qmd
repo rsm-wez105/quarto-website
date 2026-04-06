@@ -5,10 +5,9 @@ about:
   template: jolla
   links:
     - icon: envelope
-      href: mailto:your_email@address.com
+      href: mailto:wez105@ucsd.edu
     - icon: linkedin
-      href: https://www.linkedin.com/in/your_username
-
+      href: https://www.linkedin.com/in/wenwen-zhang-7696a1223/
 ---
 
 Welcome to my website!

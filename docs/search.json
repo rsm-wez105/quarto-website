@@ -7,11 +7,18 @@
     "text": "About this site"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Wenwen Zhang",
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "My Projects",
     "section": "",
-    "text": "Welcome to my website!"
+    "text": "Analysis of Cars\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 5, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Second Project\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 5, 2026\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/project1/index.html",
+    "href": "projects/project1/index.html",
+    "title": "Analysis of Cars",
+    "section": "",
+    "text": "This is my first project."
   },
   {
     "objectID": "resume.html",
@@ -21,10 +28,17 @@
     "text": "Download PDF file."
   },
   {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "My Projects",
+    "objectID": "projects/project2/index.html",
+    "href": "projects/project2/index.html",
+    "title": "My Second Project",
     "section": "",
-    "text": "Analysis of Cars\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 3, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Second Project\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 3, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "This is my second project."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Wenwen Zhang",
+    "section": "",
+    "text": "Welcome to my website!"
   }
 ]
