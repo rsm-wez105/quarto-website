@@ -1,0 +1,119 @@
+---
+title: A/B Testing a Call to Action
+subtitle: "Simulating Key Ideas from Classical Frequentist Statistics"
+author: "Wenwen Zhang"
+date: today
+---
+
+
+## Introduction
+
+In this post, I look at a simple A/B test for a call-to-action (CTA) on a website. The idea is to see which version of the CTA gets more people to sign up.
+
+On the homepage, visitors will see one of two different messages. For example, one version might say “Sign up for our newsletter here!” while the other might say “Stay up to date by signing up!”. Even though they are similar, small differences in wording might affect how users respond.
+
+An A/B test works by randomly assigning users to one of the two versions. Then we compare how many people sign up in each group. By comparing these results, we can get a sense of which CTA performs better.ii
+
+
+## The A/B Test as a Statistical Problem
+
+To think about this A/B test statistically, I treat each user outcome as binary: either the person signs up or does not sign up. Because of that, it makes sense to model each outcome with a Bernoulli distribution.
+
+The two CTA versions may lead to different sign-up rates, so I use \(p_A\) for the probability of signing up under CTA A and \(p_B\) for the probability of signing up under CTA B\).
+
+What I care about most is the difference between these two probabilities, which I can write as \( \theta = p_A - p_B \). If this difference is positive, then CTA A performs better. If it is negative, then CTA B performs better.
+
+In practice, I do not know the true values of \(p_A\) and \(p_B\), so I estimate them using the sample proportions from the data.
+
+
+## Simulating Data
+
+In a real A/B test, we would not actually know the true values of \(p_A\) and \(p_B\). But for this simulation, I set them manually so I can see how the estimator behaves when the true difference is known.
+
+Here, I let \(p_A = 0.22\) and \(p_B = 0.18\), so the true difference is \( \theta = 0.04 \). Then I simulate outcomes for users in each group using a Bernoulli model.
+
+By running the simulation many times, I can see how much the estimated difference changes from sample to sample, which helps show the variability in the estimates.
+
+
+## The Law of Large Numbers
+
+The Law of Large Numbers says that as the sample size increases, the sample average will get closer to the true value. In this context, it means that as we collect more data from the A/B test, our estimate of the difference between the two CTAs should become more stable.
+
+At the beginning, when the sample size is small, the estimated difference can vary a lot due to randomness. But as we include more observations, the estimate should settle down and get closer to the true difference of 0.04.
+
+This helps explain why larger sample sizes are important in A/B testing. With more data, we can be more confident that our estimate reflects the true effect rather than random variation.
+
+
+## Bootstrap Standard Errors
+
+After getting an estimate for the difference between the two CTAs, the next question is how precise this estimate is. In other words, we want to know how much this estimate might change if we repeated the experiment.
+
+To measure this, I use the bootstrap method. The basic idea is to repeatedly resample from the observed data and recompute the estimate each time. This allows me to approximate how much the estimate varies without relying on a closed-form formula.
+
+In this case, I take the simulated data from the previous section and draw bootstrap samples (with replacement) from both groups. For each bootstrap sample, I compute the difference in means between CTA A and CTA B. Repeating this process many times gives a collection of estimated differences.
+
+The variability of these estimates can be summarized by their standard deviation, which serves as the bootstrap standard error.
+
+For comparison, the analytical standard error for the difference in proportions is given by:
+
+$$
+SE(\hat{\theta}) = \sqrt{\frac{\hat{p}_A (1 - \hat{p}_A)}{n_A} + \frac{\hat{p}_B (1 - \hat{p}_B)}{n_B}}
+$$
+
+Here, \( \hat{p}_A \) and \( \hat{p}_B \) are the sample proportions, and \( n_A \) and \( n_B \) are the sample sizes in each group.
+
+I compare the bootstrap standard error with this analytical formula to see how close they are. If they are similar, it gives more confidence that the bootstrap approach is working as expected.
+
+
+## The Central Limit Theorem
+
+The Central Limit Theorem says that as the sample size increases, the distribution of the sample mean becomes approximately normal, even if the original data is not normally distributed.
+
+In this case, I look at the distribution of the estimated difference in means for different sample sizes. When the sample size is small, the distribution looks more irregular and can be somewhat skewed. But as the sample size increases, the distribution becomes more symmetric and bell-shaped.
+
+This shows that for larger samples, it is reasonable to treat the sampling distribution as approximately normal. This is useful because it allows us to use standard statistical tools that rely on normality.
+
+
+## Hypothesis Testing
+
+Now that we have an estimate and its standard error, we can use them to perform a hypothesis test.
+
+The main idea is to check whether the observed difference could reasonably happen if there were actually no difference between the two CTAs. So I start with a null hypothesis that \( \theta = 0 \).
+
+To do this, I standardize the estimate using its standard error. This gives the test statistic:
+
+$$
+z = \frac{\hat{\theta} - 0}{SE(\hat{\theta})}
+$$
+
+This tells us how far the estimated difference is from 0 in terms of standard errors. If this value is large in magnitude, it suggests that the observed difference is unlikely to be due to random chance.
+
+Since the sample size is large, the sampling distribution is approximately normal, so I can use the standard normal distribution to compute a p-value. This helps decide whether there is enough evidence to reject the null hypothesis.
+
+
+## The T-Test as a Regression
+
+It turns out that the two-sample test we used earlier can also be written as a simple regression. This provides another way to understand the same problem.
+
+To set this up, I combine the data from both groups into a single dataset. The outcome variable \(Y_i\) indicates whether a user signed up (1) or not (0), and the variable \(D_i\) indicates which CTA the user saw (1 for A, 0 for B).
+
+The regression model is:
+
+$$
+Y_i = \beta_0 + \beta_1 D_i + \varepsilon_i
+$$
+
+In this model, \( \beta_0 \) represents the average outcome for group B, while \( \beta_1 \) captures the difference between group A and group B. So \( \beta_1 \) corresponds directly to the difference in sign-up rates that we have been estimating throughout the analysis.
+
+This shows that the regression approach and the two-sample test are closely related. They give the same estimate for the difference, but the regression framework is more flexible and can be extended to more complex settings.
+
+
+## The Problem with Peeking
+
+In practice, it can be tempting to check the results of an experiment early and stop as soon as we see a significant result. However, this can lead to incorrect conclusions.
+
+The issue is that each time we look at the data and run a hypothesis test, there is a chance of getting a false positive. Even if the null hypothesis is true, a single test at the 5% level has a small probability of incorrectly rejecting it. But if we repeatedly check the results, these probabilities start to add up.
+
+To see this, I simulate a situation where there is actually no difference between the two CTAs. Then I repeatedly check for significance as more data is added. Even though the null hypothesis is true, I often find at least one “significant” result just by chance.
+
+This shows that peeking inflates the false positive rate. In other words, it makes us more likely to incorrectly conclude that there is a difference when there is none. This is why it is important to decide on a sample size in advance and avoid checking results too frequently during an experiment.
