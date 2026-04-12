@@ -2,7 +2,7 @@
 title: A/B Testing a Call to Action
 subtitle: "Simulating Key Ideas from Classical Frequentist Statistics"
 author: "Wenwen Zhang"
-date: today
+date: 2026-04-12
 ---
 
 
@@ -114,6 +114,6 @@ In practice, it can be tempting to check the results of an experiment early and 
 
 The issue is that each time we look at the data and run a hypothesis test, there is a chance of getting a false positive. Even if the null hypothesis is true, a single test at the 5% level has a small probability of incorrectly rejecting it. But if we repeatedly check the results, these probabilities start to add up.
 
-To see this, I simulate a situation where there is actually no difference between the two CTAs. Then I repeatedly check for significance as more data is added. Even though the null hypothesis is true, I often find at least one “significant” result just by chance.
+To see this more clearly, I simulate a situation where there is actually no difference between the two CTAs. Then I repeatedly check for significance as more data is added. Even though the null hypothesis is true, I often find at least one “significant” result just by chance.
 
 This shows that peeking inflates the false positive rate. In other words, it makes us more likely to incorrectly conclude that there is a difference when there is none. This is why it is important to decide on a sample size in advance and avoid checking results too frequently during an experiment.

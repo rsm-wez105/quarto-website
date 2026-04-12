@@ -268,7 +268,7 @@ Y_i = \beta_0 + \beta_1 D_i + \varepsilon_i
 <h2 class="anchored" data-anchor-id="the-problem-with-peeking">The Problem with Peeking</h2>
 <p>In practice, it can be tempting to check the results of an experiment early and stop as soon as we see a significant result. However, this can lead to incorrect conclusions.</p>
 <p>The issue is that each time we look at the data and run a hypothesis test, there is a chance of getting a false positive. Even if the null hypothesis is true, a single test at the 5% level has a small probability of incorrectly rejecting it. But if we repeatedly check the results, these probabilities start to add up.</p>
-<p>To see this, I simulate a situation where there is actually no difference between the two CTAs. Then I repeatedly check for significance as more data is added. Even though the null hypothesis is true, I often find at least one “significant” result just by chance.</p>
+<p>To see this more clearly, I simulate a situation where there is actually no difference between the two CTAs. Then I repeatedly check for significance as more data is added. Even though the null hypothesis is true, I often find at least one “significant” result just by chance.</p>
 <p>This shows that peeking inflates the false positive rate. In other words, it makes us more likely to incorrectly conclude that there is a difference when there is none. This is why it is important to decide on a sample size in advance and avoid checking results too frequently during an experiment.</p>
 
 
