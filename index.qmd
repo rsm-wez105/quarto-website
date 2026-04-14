@@ -1,14 +1,11 @@
 ---
 title: "Wenwen Zhang"
 image: "files/profile_pic.jpg"
-about:
-  template: jolla
-  links:
-    - icon: envelope
-      href: mailto:wez105@ucsd.edu
-    - icon: linkedin
-      href: https://www.linkedin.com/in/wenwen-zhang-7696a1223/
 ---
+
+![Wenwen Zhang](files/profile_pic.jpg){width=250 fig-align="center"}
+
+# Wenwen Zhang
 
 Hi! I'm Wenwen Zhang, a graduate student at UC San Diego.
 
@@ -25,3 +22,8 @@ Outside of school, I like exploring new places, trying different foods, and spen
 - My resume
 - A few projects I’ve worked on
 - A blog post from my statistics class
+
+## Connect
+
+- [Email](mailto:wez105@ucsd.edu)
+- [LinkedIn](https://www.linkedin.com/in/wenwen-zhang-7696a1223/)
