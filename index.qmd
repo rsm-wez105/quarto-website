@@ -10,4 +10,18 @@ about:
       href: https://www.linkedin.com/in/wenwen-zhang-7696a1223/
 ---
 
-Welcome to my website!
+Hi! I'm Wenwen Zhang, a graduate student at UC San Diego.
+
+I created this website to share my resume, some projects, and coursework from my program.
+
+## About Me
+
+I enjoy learning new tools and trying to apply them to real-world problems. Through my coursework, I’ve had the chance to explore different ways of thinking about data and decision-making.
+
+Outside of school, I like exploring new places, trying different foods, and spending time with friends.
+
+## What You'll Find Here
+
+- My resume
+- A few projects I’ve worked on
+- A blog post from my statistics class

@@ -11,7 +11,21 @@
     "href": "index.html",
     "title": "Wenwen Zhang",
     "section": "",
-    "text": "Welcome to my website!"
+    "text": "Hi! I’m Wenwen Zhang, a graduate student at UC San Diego.\nI created this website to share my resume, some projects, and coursework from my program."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Wenwen Zhang",
+    "section": "About Me",
+    "text": "About Me\nI enjoy learning new tools and trying to apply them to real-world problems. Through my coursework, I’ve had the chance to explore different ways of thinking about data and decision-making.\nOutside of school, I like exploring new places, trying different foods, and spending time with friends."
+  },
+  {
+    "objectID": "index.html#what-youll-find-here",
+    "href": "index.html#what-youll-find-here",
+    "title": "Wenwen Zhang",
+    "section": "What You’ll Find Here",
+    "text": "What You’ll Find Here\n\nMy resume\nA few projects I’ve worked on\nA blog post from my statistics class"
   },
   {
     "objectID": "projects/project2/index.html",
@@ -109,7 +123,7 @@
     "href": "projects.html",
     "title": "My Projects",
     "section": "",
-    "text": "Analysis of Cars\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 12, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Second Project\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 12, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Analysis of Cars\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 14, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Second Project\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 14, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
