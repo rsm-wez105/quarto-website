@@ -1,1 +1,30 @@
 /* css styles */
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+.navbar {
+  font-size: 1.05rem;
+}
+
+.about-image {
+  border-radius: 50%;
+  border: 4px solid #d9e6f2;
+}
+
+a {
+  color: #2f6f9f;
+}
+
+a:hover {
+  color: #1f4f73;
+}
+
+main.content {
+  max-width: 900px;
+}
