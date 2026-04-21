@@ -144,7 +144,7 @@
     "href": "posts/hw2/index.html#something-additional",
     "title": "Minimum Wage and Employment: A Replication of Card and Krueger (1994)",
     "section": "Something Additional",
-    "text": "Something Additional\nAs an additional step, I plotted the average employment levels for both states before and after the policy change.\nFrom the plot, the trends in New Jersey and Pennsylvania look quite similar. There is no clear drop in employment in New Jersey after the minimum wage increase. Seeing this visually makes the result easier to understand compared to just looking at numbers.\nOverall, the graph supports the idea that the minimum wage increase did not lead to a noticeable decrease in employment in this case."
+    "text": "Something Additional\nAs an additional step, I plotted the average employment levels for both states before and after the policy change.\nFrom the plot, the trends in New Jersey and Pennsylvania look quite similar. There is no clear drop in employment in New Jersey after the minimum wage increase. Seeing this visually makes the result easier to understand compared to just looking at numbers.\nOverall, the graph also supports the idea that the minimum wage increase did not lead to a noticeable decrease in employment in this case. This exercise helped me better understand how simple comparisons over time can lead to misleading conclusions, and why methods like difference-in-differences are useful."
   },
   {
     "objectID": "projects/project1/index.html",
