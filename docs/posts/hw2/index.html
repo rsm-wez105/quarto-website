@@ -9,7 +9,7 @@
 <meta name="author" content="Wenwen Zhang">
 <meta name="dcterms.date" content="2026-04-21">
 
-<title>My Second Project – Wenwen Zhang</title>
+<title>Minimum Wage and Employment: A Replication of Card and Krueger (1994) – Wenwen Zhang</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -121,15 +121,24 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#main-analysis" id="toc-main-analysis" class="nav-link" data-scroll-target="#main-analysis">Main Analysis</a></li>
+  <li><a href="#something-additional" id="toc-something-additional" class="nav-link" data-scroll-target="#something-additional">Something Additional</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Second Project</h1>
+<h1 class="title">Minimum Wage and Employment: A Replication of Card and Krueger (1994)</h1>
+<p class="subtitle lead">A Difference-in-Differences Analysis</p>
 </div>
 
 
@@ -158,9 +167,26 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is my second project.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this post, I replicate part of Card and Krueger (1994), which looks at how a minimum wage increase affects employment in fast-food restaurants.</p>
+<p>The study compares New Jersey, where the minimum wage increased, to Pennsylvania, where it stayed the same. By comparing these two states before and after the policy change, the authors try to see whether higher minimum wages actually reduce jobs.</p>
+<p>This is an interesting question because standard economic theory suggests that higher wages should reduce employment, but this paper challenges that idea using real data.</p>
+</section>
+<section id="main-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="main-analysis">Main Analysis</h2>
+<p>To replicate the main idea, I compare employment levels in New Jersey and Pennsylvania before and after the policy change.</p>
+<p>The main method used in this paper is difference-in-differences. First, I calculate how employment changed over time within each state. Then I compare those changes across the two states. This helps control for overall trends that might affect both states.</p>
+<p>From my replication, I find that employment in New Jersey does not decrease relative to Pennsylvania after the minimum wage increase. This is consistent with the original paper’s conclusion, which suggests that the effect of minimum wage on employment is not as negative as we might expect.</p>
+</section>
+<section id="something-additional" class="level2">
+<h2 class="anchored" data-anchor-id="something-additional">Something Additional</h2>
+<p>As an additional step, I plotted the average employment levels for both states before and after the policy change.</p>
+<p>From the plot, the trends in New Jersey and Pennsylvania look quite similar. There is no clear drop in employment in New Jersey after the minimum wage increase. Seeing this visually makes the result easier to understand compared to just looking at numbers.</p>
+<p>Overall, the graph supports the idea that the minimum wage increase did not lead to a noticeable decrease in employment in this case.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

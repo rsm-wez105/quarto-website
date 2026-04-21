@@ -1,0 +1,31 @@
+---
+title: "Minimum Wage and Employment: A Replication of Card and Krueger (1994)"
+subtitle: "A Difference-in-Differences Analysis"
+author: "Wenwen Zhang"
+date: 2026-04-21
+---
+
+
+## Introduction
+
+In this post, I replicate part of Card and Krueger (1994), which looks at how a minimum wage increase affects employment in fast-food restaurants.
+
+The study compares New Jersey, where the minimum wage increased, to Pennsylvania, where it stayed the same. By comparing these two states before and after the policy change, the authors try to see whether higher minimum wages actually reduce jobs.
+
+This is an interesting question because standard economic theory suggests that higher wages should reduce employment, but this paper challenges that idea using real data.
+
+## Main Analysis
+
+To replicate the main idea, I compare employment levels in New Jersey and Pennsylvania before and after the policy change.
+
+The main method used in this paper is difference-in-differences. First, I calculate how employment changed over time within each state. Then I compare those changes across the two states. This helps control for overall trends that might affect both states.
+
+From my replication, I find that employment in New Jersey does not decrease relative to Pennsylvania after the minimum wage increase. This is consistent with the original paper’s conclusion, which suggests that the effect of minimum wage on employment is not as negative as we might expect.
+
+## Something Additional
+
+As an additional step, I plotted the average employment levels for both states before and after the policy change.
+
+From the plot, the trends in New Jersey and Pennsylvania look quite similar. There is no clear drop in employment in New Jersey after the minimum wage increase. Seeing this visually makes the result easier to understand compared to just looking at numbers.
+
+Overall, the graph supports the idea that the minimum wage increase did not lead to a noticeable decrease in employment in this case.

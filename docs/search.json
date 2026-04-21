@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "A/B Testing a Call to Action\n\n\nSimulating Key Ideas from Classical Frequentist Statistics\n\n\n\n\n\n\n\n\nApr 12, 2026\n\n\nWenwen Zhang\n\n\n\n\n\nNo matching items"
+    "text": "A/B Testing a Call to Action\n\n\nSimulating Key Ideas from Classical Frequentist Statistics\n\n\n\n\n\n\n\n\nApr 12, 2026\n\n\nWenwen Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nMinimum Wage and Employment: A Replication of Card and Krueger (1994)\n\n\nA Difference-in-Differences Analysis\n\n\n\n\n\n\n\n\nApr 21, 2026\n\n\nWenwen Zhang\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -119,6 +119,34 @@
     "text": "Download PDF file."
   },
   {
+    "objectID": "posts/hw2/index.html",
+    "href": "posts/hw2/index.html",
+    "title": "Minimum Wage and Employment: A Replication of Card and Krueger (1994)",
+    "section": "",
+    "text": "In this post, I replicate part of Card and Krueger (1994), which looks at how a minimum wage increase affects employment in fast-food restaurants.\nThe study compares New Jersey, where the minimum wage increased, to Pennsylvania, where it stayed the same. By comparing these two states before and after the policy change, the authors try to see whether higher minimum wages actually reduce jobs.\nThis is an interesting question because standard economic theory suggests that higher wages should reduce employment, but this paper challenges that idea using real data."
+  },
+  {
+    "objectID": "posts/hw2/index.html#introduction",
+    "href": "posts/hw2/index.html#introduction",
+    "title": "Minimum Wage and Employment: A Replication of Card and Krueger (1994)",
+    "section": "",
+    "text": "In this post, I replicate part of Card and Krueger (1994), which looks at how a minimum wage increase affects employment in fast-food restaurants.\nThe study compares New Jersey, where the minimum wage increased, to Pennsylvania, where it stayed the same. By comparing these two states before and after the policy change, the authors try to see whether higher minimum wages actually reduce jobs.\nThis is an interesting question because standard economic theory suggests that higher wages should reduce employment, but this paper challenges that idea using real data."
+  },
+  {
+    "objectID": "posts/hw2/index.html#main-analysis",
+    "href": "posts/hw2/index.html#main-analysis",
+    "title": "Minimum Wage and Employment: A Replication of Card and Krueger (1994)",
+    "section": "Main Analysis",
+    "text": "Main Analysis\nTo replicate the main idea, I compare employment levels in New Jersey and Pennsylvania before and after the policy change.\nThe main method used in this paper is difference-in-differences. First, I calculate how employment changed over time within each state. Then I compare those changes across the two states. This helps control for overall trends that might affect both states.\nFrom my replication, I find that employment in New Jersey does not decrease relative to Pennsylvania after the minimum wage increase. This is consistent with the original paper’s conclusion, which suggests that the effect of minimum wage on employment is not as negative as we might expect."
+  },
+  {
+    "objectID": "posts/hw2/index.html#something-additional",
+    "href": "posts/hw2/index.html#something-additional",
+    "title": "Minimum Wage and Employment: A Replication of Card and Krueger (1994)",
+    "section": "Something Additional",
+    "text": "Something Additional\nAs an additional step, I plotted the average employment levels for both states before and after the policy change.\nFrom the plot, the trends in New Jersey and Pennsylvania look quite similar. There is no clear drop in employment in New Jersey after the minimum wage increase. Seeing this visually makes the result easier to understand compared to just looking at numbers.\nOverall, the graph supports the idea that the minimum wage increase did not lead to a noticeable decrease in employment in this case."
+  },
+  {
     "objectID": "projects/project1/index.html",
     "href": "projects/project1/index.html",
     "title": "Analysis of Cars",
@@ -130,7 +158,7 @@
     "href": "projects.html",
     "title": "My Projects",
     "section": "",
-    "text": "Analysis of Cars\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 14, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Second Project\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 14, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Analysis of Cars\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 21, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Second Project\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 21, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
