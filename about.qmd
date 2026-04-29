@@ -2,4 +2,4 @@
 title: "About"
 ---
 
-About this site
+This website collects selected coursework, projects, and blog posts. It is organized to make the work easier to browse and understand.
