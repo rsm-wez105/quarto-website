@@ -65,6 +65,27 @@ Here, \( \hat{p}_A \) and \( \hat{p}_B \) are the sample proportions, and \( n_A
 I compare the bootstrap standard error with this analytical formula to see how close they are. If they are similar, it gives more confidence that the bootstrap approach is working as expected.
 
 
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.random.normal(0, 1, 100)
+
+boot_means = []
+for _ in range(1000):
+    sample = np.random.choice(data, size=100, replace=True)
+    boot_means.append(np.mean(sample))
+
+plt.hist(boot_means, bins=30)
+plt.title("Bootstrap distribution")
+plt.show()
+```
+
+The bootstrap distribution approximates the sampling distribution of the mean.
+
+
+
 ## The Central Limit Theorem
 
 The Central Limit Theorem says that as the sample size increases, the distribution of the sample mean becomes approximately normal, even if the original data is not normally distributed.
@@ -73,6 +94,23 @@ In this case, I look at the distribution of the estimated difference in means fo
 
 This shows that for larger samples, it is reasonable to treat the sampling distribution as approximately normal. This is useful because it allows us to use standard statistical tools that rely on normality.
 
+The CLT says...
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+means = []
+for _ in range(1000):
+    sample = np.random.exponential(scale=1, size=50)
+    means.append(np.mean(sample))
+
+plt.hist(means, bins=30)
+plt.title("Sampling distribution of the mean")
+plt.show()
+```
+
+As we can see, the distribution becomes more bell-shaped.
 
 ## Hypothesis Testing
 
@@ -90,6 +128,18 @@ This tells us how far the estimated difference is from 0 in terms of standard er
 
 Since the sample size is large, the sampling distribution is approximately normal, so I can use the standard normal distribution to compute a p-value. This helps decide whether there is enough evidence to reject the null hypothesis.
 
+```{python}
+from scipy import stats
+
+data = np.random.normal(0, 1, 100)
+
+z = np.mean(data) / (np.std(data) / np.sqrt(len(data)))
+p_value = 2 * (1 - stats.norm.cdf(abs(z)))
+
+z, p_value
+```
+
+The p-value tells us whether we reject the null hypothesis. If the p-value is small, we reject the null hypothesis.
 
 ## The T-Test as a Regression
 
