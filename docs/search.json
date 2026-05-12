@@ -133,18 +133,39 @@
     "text": "In this post, I replicate part of Card and Krueger (1994), which looks at how a minimum wage increase affects employment in fast-food restaurants.\nThe study compares New Jersey, where the minimum wage increased, to Pennsylvania, where it stayed the same. By comparing these two states before and after the policy change, the authors try to see whether higher minimum wages actually reduce jobs.\nThis is an interesting question because standard economic theory suggests that higher wages should reduce employment, but this paper challenges that idea using real data."
   },
   {
+    "objectID": "posts/hw2/index.html#load-packages",
+    "href": "posts/hw2/index.html#load-packages",
+    "title": "Minimum Wage and Employment: A Replication of Card and Krueger (1994)",
+    "section": "Load packages",
+    "text": "Load packages\n\nimport pandas as pd\nimport numpy as np\nimport statsmodels.api as sm\nfrom pathlib import Path"
+  },
+  {
+    "objectID": "posts/hw2/index.html#load-the-data",
+    "href": "posts/hw2/index.html#load-the-data",
+    "title": "Minimum Wage and Employment: A Replication of Card and Krueger (1994)",
+    "section": "Load the data",
+    "text": "Load the data\n\ndata_path = Path(\"public.dat\")\n\ncolspecs = [\n    (0, 3), (4, 5), (6, 7), (8, 9), (10, 11), (12, 13),\n    (14, 15), (16, 17), (18, 19), (20, 21), (22, 24),\n    (25, 30), (31, 36), (37, 42), (43, 48), (49, 54),\n    (55, 60), (61, 62), (63, 68), (69, 70), (71, 76),\n    (77, 82), (83, 88), (89, 94), (95, 100), (101, 103),\n    (104, 106), (107, 108), (109, 110), (111, 117), (118, 120),\n    (121, 126), (127, 132), (133, 138), (139, 144), (145, 150),\n    (151, 156), (157, 158), (159, 160), (161, 166), (167, 172),\n    (173, 178), (179, 184), (185, 190), (191, 193), (194, 196)\n]\n\nnames = [\n    \"sheet\", \"chain\", \"co_owned\", \"state\",\n    \"southj\", \"centralj\", \"northj\", \"pa1\", \"pa2\", \"shore\",\n    \"ncalls\", \"empft\", \"emppt\", \"nmgrs\", \"wage_st\", \"inctime\",\n    \"firstinc\", \"bonus\", \"pctaff\", \"meals\", \"open\", \"hrsopen\",\n    \"psoda\", \"pfry\", \"pentree\", \"nregs\", \"nregs11\",\n    \"type2\", \"status2\", \"date2\", \"ncalls2\",\n    \"empft2\", \"emppt2\", \"nmgrs2\", \"wage_st2\", \"inctime2\",\n    \"firstin2\", \"special2\", \"meals2\", \"open2\", \"hrsopen2\",\n    \"psoda2\", \"pfry2\", \"pentree2\", \"nregs2\", \"nregs112\"\n]\n\ndf = pd.read_fwf(\n    data_path,\n    colspecs=colspecs,\n    names=names,\n    na_values=\".\"\n)\n\ndf = df.apply(lambda col: pd.to_numeric(col, errors=\"coerce\"))\n\ndf.shape\n\n(410, 46)"
+  },
+  {
+    "objectID": "posts/hw2/index.html#construct-key-variables",
+    "href": "posts/hw2/index.html#construct-key-variables",
+    "title": "Minimum Wage and Employment: A Replication of Card and Krueger (1994)",
+    "section": "Construct key variables",
+    "text": "Construct key variables\n\ndf[\"fte_before\"] = df[\"empft\"] + df[\"nmgrs\"] + 0.5 * df[\"emppt\"]\ndf[\"fte_after\"] = df[\"empft2\"] + df[\"nmgrs2\"] + 0.5 * df[\"emppt2\"]\n\ndf.loc[df[\"status2\"] == 3, \"fte_after\"] = 0\ndf.loc[df[\"status2\"].isin([2, 4, 5]), \"fte_after\"] = np.nan\n\ndf[\"fte_change\"] = df[\"fte_after\"] - df[\"fte_before\"]\ndf[\"state_name\"] = np.where(df[\"state\"] == 1, \"NJ\", \"PA\")\n\ndf[[\"state_name\", \"fte_before\", \"fte_after\", \"fte_change\"]].head()\n\n\n\n\n\n\n\n\nstate_name\nfte_before\nfte_after\nfte_change\n\n\n\n\n0\nPA\n40.50\n24.0\n-16.50\n\n\n1\nPA\n13.75\n11.5\n-2.25\n\n\n2\nPA\n8.50\n10.5\n2.00\n\n\n3\nPA\n34.00\n20.0\n-14.00\n\n\n4\nPA\n24.00\n35.5\n11.50"
+  },
+  {
     "objectID": "posts/hw2/index.html#main-analysis",
     "href": "posts/hw2/index.html#main-analysis",
     "title": "Minimum Wage and Employment: A Replication of Card and Krueger (1994)",
     "section": "Main Analysis",
-    "text": "Main Analysis\nTo replicate the main idea, I compare employment levels in New Jersey and Pennsylvania before and after the policy change.\nThe main method used in this paper is difference-in-differences. First, I calculate how employment changed over time within each state. Then I compare those changes across the two states. This helps control for overall trends that might affect both states.\nFrom my replication, I find that employment in New Jersey does not decrease relative to Pennsylvania after the minimum wage increase. This is consistent with the original paper’s conclusion, which suggests that the effect of minimum wage on employment is not as negative as we might expect."
+    "text": "Main Analysis\nTo make this a real replication, I use the public Card and Krueger data to reproduce key results from the original paper. I focus on Table 3 and Table 4 because these tables summarize the main findings.\nReplicating Table 3\n\npa_before = df.loc[df[\"state_name\"] == \"PA\", \"fte_before\"].mean()\nnj_before = df.loc[df[\"state_name\"] == \"NJ\", \"fte_before\"].mean()\n\npa_after = df.loc[df[\"state_name\"] == \"PA\", \"fte_after\"].mean()\nnj_after = df.loc[df[\"state_name\"] == \"NJ\", \"fte_after\"].mean()\n\npa_change = pa_after - pa_before\nnj_change = nj_after - nj_before\n\ntable3 = pd.DataFrame({\n    \"PA\": [pa_before, pa_after, pa_change],\n    \"NJ\": [nj_before, nj_after, nj_change]\n}, index=[\"Before\", \"After\", \"Change\"])\n\ntable3[\"Difference (NJ - PA)\"] = table3[\"NJ\"] - table3[\"PA\"]\n\ntable3.round(2)\n\n\n\n\n\n\n\n\nPA\nNJ\nDifference (NJ - PA)\n\n\n\n\nBefore\n23.33\n20.44\n-2.89\n\n\nAfter\n21.17\n21.03\n-0.14\n\n\nChange\n-2.17\n0.59\n2.75\n\n\n\n\n\n\n\nThe table above shows the average employment levels before and after the policy change. The original paper reports very similar values (e.g., PA ≈ 23.33 and NJ ≈ 20.44 before the policy change). My replicated results closely match these values, confirming that the data has been processed correctly.\nReplicating Table 4 Column (i)\n\nreg_df = df.loc[\n    df[\"fte_change\"].notna() & df[\"state\"].notna(),\n    [\"fte_change\", \"state\"]\n].copy()\n\nreg_df[\"NJ_dummy\"] = (reg_df[\"state\"] == 1).astype(int)\n\nX = sm.add_constant(reg_df[\"NJ_dummy\"])\ny = reg_df[\"fte_change\"]\n\nmodel = sm.OLS(y, X).fit()\n\ntable4 = pd.DataFrame({\n    \"Coefficient\": model.params,\n    \"Std. Error\": model.bse\n})\n\ntable4.round(2)\n\n\n\n\n\n\n\n\nCoefficient\nStd. Error\n\n\n\n\nconst\n-2.28\n1.04\n\n\nNJ_dummy\n2.75\n1.15\n\n\n\n\n\n\n\nThe estimated coefficient for New Jersey is close to the value reported in the original paper, which supports the same conclusion. The published Table 4 column (i) reports a coefficient of about 2.33 with a standard error of 1.19. My estimate of 2.75 is close to this value and leads to the same conclusion."
   },
   {
     "objectID": "posts/hw2/index.html#something-additional",
     "href": "posts/hw2/index.html#something-additional",
     "title": "Minimum Wage and Employment: A Replication of Card and Krueger (1994)",
     "section": "Something Additional",
-    "text": "Something Additional\nAs an additional step, I compared the average employment levels for both states before and after the policy change.\nLooking at the data, the trends in New Jersey and Pennsylvania are quite similar. There is no clear drop in employment in New Jersey after the minimum wage increase. This makes the result easier to understand beyond just the numerical estimates.\nOverall, this comparison supports the idea that the minimum wage increase did not lead to a noticeable decrease in employment in this case."
+    "text": "Something Additional\nAs an additional step, I compare my results to the original paper. The numbers are not exactly identical, but they are very close. Small differences are expected due to data handling choices.\nOverall, the replication supports the paper’s conclusion that the minimum wage increase did not reduce employment."
   },
   {
     "objectID": "projects/project1/index.html",
@@ -158,13 +179,13 @@
     "href": "projects.html",
     "title": "My Projects",
     "section": "",
-    "text": "Analysis of Cars\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 21, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Second Project\n\n\n\n\n\n\nWenwen Zhang\n\n\nApr 21, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Analysis of Cars\n\n\n\n\n\n\nWenwen Zhang\n\n\nMay 11, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Second Project\n\n\n\n\n\n\nWenwen Zhang\n\n\nMay 11, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "This website collects selected coursework, projects, and blog posts. It is organized to make the work easier to browse and understand."
   }
 ]
