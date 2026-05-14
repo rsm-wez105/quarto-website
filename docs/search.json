@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "A/B Testing a Call to Action\n\n\nSimulating Key Ideas from Classical Frequentist Statistics\n\n\n\n\n\n\n\n\nApr 12, 2026\n\n\nWenwen Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nMinimum Wage and Employment: A Replication of Card and Krueger (1994)\n\n\nA Difference-in-Differences Analysis\n\n\n\n\n\n\n\n\nApr 21, 2026\n\n\nWenwen Zhang\n\n\n\n\n\nNo matching items"
+    "text": "A/B Testing a Call to Action\n\n\nSimulating Key Ideas from Classical Frequentist Statistics\n\n\n\n\n\n\n\n\nApr 12, 2026\n\n\nWenwen Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nMinimum Wage and Employment: A Replication of Card and Krueger (1994)\n\n\nA Difference-in-Differences Analysis\n\n\n\n\n\n\n\n\nApr 21, 2026\n\n\nWenwen Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nPoisson Regression and Maximum Likelihood Estimation\n\n\nA Case Study of Blueprinty’s Software and Patent Awards\n\n\n\n\n\n\n\n\nMay 13, 2026\n\n\nWenwen Zhang\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -95,7 +95,7 @@
     "href": "posts/ab-test/index.html#hypothesis-testing",
     "title": "A/B Testing a Call to Action",
     "section": "Hypothesis Testing",
-    "text": "Hypothesis Testing\nNow that we have an estimate and its standard error, we can use them to perform a hypothesis test.\nThe main idea is to check whether the observed difference could reasonably happen if there were actually no difference between the two CTAs. So I start with a null hypothesis that ( = 0 ).\nTo do this, I standardize the estimate using its standard error. This gives the test statistic:\n\\[\nz = \\frac{\\hat{\\theta} - 0}{SE(\\hat{\\theta})}\n\\]\nThis tells us how far the estimated difference is from 0 in terms of standard errors. If this value is large in magnitude, it suggests that the observed difference is unlikely to be due to random chance.\nSince the sample size is large, the sampling distribution is approximately normal, so I can use the standard normal distribution to compute a p-value. This helps decide whether there is enough evidence to reject the null hypothesis.\n\nfrom scipy import stats\n\ndata = np.random.normal(0, 1, 100)\n\nz = np.mean(data) / (np.std(data) / np.sqrt(len(data)))\np_value = 2 * (1 - stats.norm.cdf(abs(z)))\n\nz, p_value\n\n(np.float64(0.26393747855806216), np.float64(0.7918280955941044))\n\n\nThe p-value tells us whether we reject the null hypothesis. If the p-value is small, we reject the null hypothesis."
+    "text": "Hypothesis Testing\nNow that we have an estimate and its standard error, we can use them to perform a hypothesis test.\nThe main idea is to check whether the observed difference could reasonably happen if there were actually no difference between the two CTAs. So I start with a null hypothesis that ( = 0 ).\nTo do this, I standardize the estimate using its standard error. This gives the test statistic:\n\\[\nz = \\frac{\\hat{\\theta} - 0}{SE(\\hat{\\theta})}\n\\]\nThis tells us how far the estimated difference is from 0 in terms of standard errors. If this value is large in magnitude, it suggests that the observed difference is unlikely to be due to random chance.\nSince the sample size is large, the sampling distribution is approximately normal, so I can use the standard normal distribution to compute a p-value. This helps decide whether there is enough evidence to reject the null hypothesis.\n\nfrom scipy import stats\n\ndata = np.random.normal(0, 1, 100)\n\nz = np.mean(data) / (np.std(data) / np.sqrt(len(data)))\np_value = 2 * (1 - stats.norm.cdf(abs(z)))\n\nz, p_value\n\n(np.float64(-0.5527882278544569), np.float64(0.580408430449828))\n\n\nThe p-value tells us whether we reject the null hypothesis. If the p-value is small, we reject the null hypothesis."
   },
   {
     "objectID": "posts/ab-test/index.html#the-t-test-as-a-regression",
@@ -110,13 +110,6 @@
     "title": "A/B Testing a Call to Action",
     "section": "The Problem with Peeking",
     "text": "The Problem with Peeking\nIn practice, it can be tempting to check the results of an experiment early and stop as soon as we see a significant result. However, this can lead to incorrect conclusions.\nThe issue is that each time we look at the data and run a hypothesis test, there is a chance of getting a false positive. Even if the null hypothesis is true, a single test at the 5% level has a small probability of incorrectly rejecting it. But if we repeatedly check the results, these probabilities start to add up.\nTo see this more clearly, I simulate a situation where there is actually no difference between the two CTAs. Then I repeatedly check for significance as more data is added. Even though the null hypothesis is true, I often find at least one “significant” result just by chance.\nThis shows that peeking inflates the false positive rate. In other words, it makes us more likely to incorrectly conclude that there is a difference when there is none. This is why it is important to decide on a sample size in advance and avoid checking results too frequently during an experiment."
-  },
-  {
-    "objectID": "resume.html",
-    "href": "resume.html",
-    "title": "My Resume",
-    "section": "",
-    "text": "Download PDF file."
   },
   {
     "objectID": "posts/hw2/index.html",
@@ -168,6 +161,62 @@
     "text": "Something Additional\nAs an additional step, I compare my results to the original paper. The numbers are not exactly identical, but they are very close. Small differences are expected due to data handling choices.\nOverall, the replication supports the paper’s conclusion that the minimum wage increase did not reduce employment."
   },
   {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "My Resume",
+    "section": "",
+    "text": "Download PDF file."
+  },
+  {
+    "objectID": "posts/hw3/index.html",
+    "href": "posts/hw3/index.html",
+    "title": "Poisson Regression and Maximum Likelihood Estimation",
+    "section": "",
+    "text": "Blueprinty is a company that provides software designed to help engineering firms prepare patent applications. The company claims that using its software improves the chances of getting patents approved.\nTo study this, Blueprinty collected data on 1,500 mature engineering firms. For each firm, we observe the number of patents awarded over the past five years, whether the firm is a Blueprinty customer, as well as information such as firm age and region.\nAt first glance, it might seem straightforward to compare patent counts between customers and non-customers. However, this comparison is not necessarily causal. Firms that choose to use Blueprinty’s software may already differ in important ways, such as being more experienced or located in more innovative regions. Because of this, any observed difference in patent outcomes may reflect these underlying characteristics rather than the effect of the software itself.\nIn this post, I use a Poisson model and maximum likelihood estimation (MLE) to analyze the relationship between Blueprinty usage and patent counts, while accounting for the structure of the data."
+  },
+  {
+    "objectID": "posts/hw3/index.html#introduction",
+    "href": "posts/hw3/index.html#introduction",
+    "title": "Poisson Regression and Maximum Likelihood Estimation",
+    "section": "",
+    "text": "Blueprinty is a company that provides software designed to help engineering firms prepare patent applications. The company claims that using its software improves the chances of getting patents approved.\nTo study this, Blueprinty collected data on 1,500 mature engineering firms. For each firm, we observe the number of patents awarded over the past five years, whether the firm is a Blueprinty customer, as well as information such as firm age and region.\nAt first glance, it might seem straightforward to compare patent counts between customers and non-customers. However, this comparison is not necessarily causal. Firms that choose to use Blueprinty’s software may already differ in important ways, such as being more experienced or located in more innovative regions. Because of this, any observed difference in patent outcomes may reflect these underlying characteristics rather than the effect of the software itself.\nIn this post, I use a Poisson model and maximum likelihood estimation (MLE) to analyze the relationship between Blueprinty usage and patent counts, while accounting for the structure of the data."
+  },
+  {
+    "objectID": "posts/hw3/index.html#exploring-the-data",
+    "href": "posts/hw3/index.html#exploring-the-data",
+    "title": "Poisson Regression and Maximum Likelihood Estimation",
+    "section": "Exploring the Data",
+    "text": "Exploring the Data\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\ndf = pd.read_csv(\"blueprinty.csv\")\ndf.head()\n\n\n\n\n\n\n\n\npatents\nregion\nage\niscustomer\n\n\n\n\n0\n0\nMidwest\n32.5\n0\n\n\n1\n3\nSouthwest\n37.5\n0\n\n\n2\n4\nNorthwest\n27.0\n1\n\n\n3\n3\nNortheast\n24.5\n0\n\n\n4\n3\nSouthwest\n37.0\n0\n\n\n\n\n\n\n\n\ncustomers = df[df[\"iscustomer\"] == 1][\"patents\"]\nnon_customers = df[df[\"iscustomer\"] == 0][\"patents\"]\n\nplt.hist(customers, bins=30, alpha=0.5, label=\"Customers\")\nplt.hist(non_customers, bins=30, alpha=0.5, label=\"Non-customers\")\nplt.legend()\nplt.title(\"Patent counts by customer status\")\nplt.show()\n\n\n\n\n\n\n\n\nFrom the histogram, customers appear to have slightly higher patent counts on average compared to non-customers. However, the two distributions overlap quite a bit, so the difference is not very clear-cut.\nThis suggests that while there may be a relationship between using Blueprinty and patent outcomes, it is not obvious how large the effect is just from visual inspection."
+  },
+  {
+    "objectID": "posts/hw3/index.html#a-simple-poisson-model-via-maximum-likelihood",
+    "href": "posts/hw3/index.html#a-simple-poisson-model-via-maximum-likelihood",
+    "title": "Poisson Regression and Maximum Likelihood Estimation",
+    "section": "A Simple Poisson Model via Maximum Likelihood",
+    "text": "A Simple Poisson Model via Maximum Likelihood\nThe outcome variable is a count — the number of patents awarded to each firm over the last five years. Because counts are non-negative integers, a Poisson model is a natural starting point for modeling this type of data.\nAssume that each observation follows a Poisson distribution:\n\\[\nY_i \\sim \\text{Poisson}(\\lambda)\n\\]\nThe probability mass function is:\n\\[\nP(Y_i = y_i \\mid \\lambda) = \\frac{e^{-\\lambda} \\lambda^{y_i}}{y_i!}\n\\]\nAssuming the observations are independent, the likelihood function is:\n\\[\nL(\\lambda) = \\prod_{i=1}^{n} \\frac{e^{-\\lambda} \\lambda^{y_i}}{y_i!}\n\\]\nTaking logs, the log-likelihood becomes:\n\\[\n\\ell(\\lambda) = \\sum_{i=1}^{n} \\left( y_i \\log \\lambda - \\lambda - \\log(y_i!) \\right)\n\\]\nTo estimate \\(\\lambda\\), I compute the log-likelihood numerically and find the value that maximizes it.\n\nimport numpy as np\nfrom scipy.optimize import minimize\nfrom scipy.special import gammaln\n\ny = df[\"patents\"].values\n\ndef neg_log_likelihood(beta):\n    lam = np.exp(beta[0])\n    log_lik = np.sum(y * np.log(lam) - lam - gammaln(y + 1))\n    return -log_lik\n\nresult = minimize(neg_log_likelihood, x0=[0])\n\nbeta_hat = result.x[0]\nlambda_hat = np.exp(beta_hat)\n\nlambda_hat\n\nnp.float64(3.6846666635253857)\n\n\nThe estimated value of \\(\\lambda\\) is about 3.68. This means that, according to the Poisson model, the average number of patents per firm is around 3.68 over the five-year period.\nTo check whether this estimate makes sense, we can compare it to the sample mean of the data. Since the Poisson distribution has the property that its mean is equal to \\(\\lambda\\), we expect the MLE estimate to be close to the sample average.\nIn fact, the estimated value is very close to the sample mean, which suggests that the maximum likelihood estimation is working correctly. This result provides a useful sanity check and confirms that the Poisson model is capturing the overall level of patent activity in the data.\nHowever, this simple model does not yet account for differences between firms, such as whether they are Blueprinty customers or their age and region.\n\nlambdas = np.linspace(0.1, 10, 100)\nlog_lik_vals = []\n\nfor lam in lambdas:\n    log_lik = np.sum(y * np.log(lam) - lam - gammaln(y + 1))\n    log_lik_vals.append(log_lik)\n\nplt.plot(lambdas, log_lik_vals)\nplt.axvline(lambda_hat, color='red', linestyle='--', label=\"MLE\")\nplt.title(\"Log-likelihood function\")\nplt.xlabel(\"Lambda\")\nplt.ylabel(\"Log-likelihood\")\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\nThe log-likelihood curve reaches its maximum at a value of λ close to 3.7, which matches the estimate obtained from numerical optimization. This provides a visual confirmation that the maximum likelihood estimate corresponds to the value of λ that best fits the observed data.\nFrom the shape of the curve, we can also see that the log-likelihood increases rapidly at first and then gradually decreases, indicating that values of λ far from the optimum provide a much worse fit to the data."
+  },
+  {
+    "objectID": "posts/hw3/index.html#poisson-regression",
+    "href": "posts/hw3/index.html#poisson-regression",
+    "title": "Poisson Regression and Maximum Likelihood Estimation",
+    "section": "Poisson Regression",
+    "text": "Poisson Regression\nIn the previous section, I assumed that all firms share the same expected patent rate \\(\\lambda\\). However, this is a strong assumption, since firms differ in characteristics such as age, region, and whether they use Blueprinty’s software.\nTo allow for this, I extend the model to a Poisson regression:\n\\[\nY_i \\sim \\text{Poisson}(\\lambda_i), \\quad \\text{where} \\quad \\lambda_i = \\exp(X_i \\beta)\n\\]\nThe exponential link function ensures that \\(\\lambda_i\\) is always positive, which is required for a Poisson distribution.\nIn this model, the expected number of patents depends on firm characteristics, including whether the firm is a Blueprinty customer.\n\nimport statsmodels.api as sm\n\nX = df[[\"iscustomer\", \"age\"]]\nX = sm.add_constant(X)\n\npoisson_model = sm.GLM(df[\"patents\"], X, family=sm.families.Poisson()).fit()\n\nsummary_table = pd.DataFrame({\n    \"Coefficient\": poisson_model.params,\n    \"Std. Error\": poisson_model.bse,\n    \"p-value\": poisson_model.pvalues\n})\n\nsummary_table.round(3)\n\n\n\n\n\n\n\n\nCoefficient\nStd. Error\np-value\n\n\n\n\nconst\n1.502\n0.051\n0.0\n\n\niscustomer\n0.181\n0.028\n0.0\n\n\nage\n-0.010\n0.002\n0.0\n\n\n\n\n\n\n\nThe coefficient on iscustomer is positive (about 0.18), which suggests that firms using Blueprinty’s software tend to have higher patent counts compared to non-customers.\nSince the model is log-linear, this coefficient can be interpreted in percentage terms. Specifically, exp(0.18) ≈ 1.20, which implies about a 20% increase in expected patent counts.\nThe coefficient on age is slightly negative (around -0.01), indicating that older firms tend to have slightly fewer patents, although the effect is relatively small in magnitude.\nOverall, the results suggest a positive relationship between Blueprinty usage and patent outcomes. However, this should not be interpreted as a causal effect, since firms are not randomly assigned to use the software. The observed difference may reflect underlying differences in firm characteristics rather than the impact of the software itself."
+  },
+  {
+    "objectID": "posts/hw3/index.html#the-effect-of-blueprintys-software",
+    "href": "posts/hw3/index.html#the-effect-of-blueprintys-software",
+    "title": "Poisson Regression and Maximum Likelihood Estimation",
+    "section": "The Effect of Blueprinty’s Software",
+    "text": "The Effect of Blueprinty’s Software\n\nX0 = X.copy()\nX1 = X.copy()\n\nX0[\"iscustomer\"] = 0\n\nX1[\"iscustomer\"] = 1\n\n\ny_hat_0 = poisson_model.predict(X0)\ny_hat_1 = poisson_model.predict(X1)\n\n\neffect = (y_hat_1 - y_hat_0).mean()\n\neffect\n\nnp.float64(0.6887754455548759)\n\n\nTo better understand the effect of Blueprinty’s software, I construct two counterfactual scenarios. In the first scenario, I assume that no firms use the software. In the second, I assume that all firms use it, while keeping all other characteristics fixed.\nUsing the fitted Poisson model, I predict the expected number of patents for each firm under both scenarios. The average difference between these predictions is about 0.69 patents per firm.\nThis means that, according to the model, using Blueprinty’s software is associated with an increase of about 0.69 patents over the five-year period.\nHowever, this estimate should be interpreted with caution. Since firms are not randomly assigned to use the software, the observed difference may reflect underlying differences in firm characteristics, such as experience or location, rather than the causal impact of Blueprinty’s product."
+  },
+  {
+    "objectID": "posts/hw3/index.html#conclusion",
+    "href": "posts/hw3/index.html#conclusion",
+    "title": "Poisson Regression and Maximum Likelihood Estimation",
+    "section": "Conclusion",
+    "text": "Conclusion\nIn this post, I used a Poisson model and maximum likelihood estimation to analyze the relationship between Blueprinty’s software and patent outcomes.\nThe results show that firms using Blueprinty’s software tend to have higher patent counts, and the regression analysis suggests about a 20% increase in expected patents. The counterfactual analysis further indicates an average increase of about 0.69 patents per firm over five years.\nHowever, these results should not be interpreted as causal. Since firms are not randomly assigned to use the software, the observed differences may reflect underlying characteristics rather than the effect of Blueprinty’s product itself.\nOverall, while the evidence is consistent with Blueprinty’s claim, a stronger research design would be needed to establish a causal relationship."
+  },
+  {
     "objectID": "projects/project1/index.html",
     "href": "projects/project1/index.html",
     "title": "Analysis of Cars",
@@ -179,7 +228,7 @@
     "href": "projects.html",
     "title": "My Projects",
     "section": "",
-    "text": "Analysis of Cars\n\n\n\n\n\n\nWenwen Zhang\n\n\nMay 11, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Second Project\n\n\n\n\n\n\nWenwen Zhang\n\n\nMay 11, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Analysis of Cars\n\n\n\n\n\n\nWenwen Zhang\n\n\nMay 13, 2026\n\n\n\n\n\n\n\n\n\n\n\nMy Second Project\n\n\n\n\n\n\nWenwen Zhang\n\n\nMay 13, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",

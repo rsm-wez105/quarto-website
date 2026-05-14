@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="load-packages" class="level2">
 <h2 class="anchored" data-anchor-id="load-packages">Load packages</h2>
-<div id="1e2c8d05" class="cell" data-execution_count="1">
+<div id="f921f1fa" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="load-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-the-data">Load the data</h2>
-<div id="ce79619f" class="cell" data-execution_count="2">
+<div id="9f17b776" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> Path(<span class="st">"public.dat"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>colspecs <span class="op">=</span> [</span>
@@ -269,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="construct-key-variables" class="level2">
 <h2 class="anchored" data-anchor-id="construct-key-variables">Construct key variables</h2>
-<div id="d19e8e89" class="cell" data-execution_count="3">
+<div id="af88ffdf" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"fte_before"</span>] <span class="op">=</span> df[<span class="st">"empft"</span>] <span class="op">+</span> df[<span class="st">"nmgrs"</span>] <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> df[<span class="st">"emppt"</span>]</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"fte_after"</span>] <span class="op">=</span> df[<span class="st">"empft2"</span>] <span class="op">+</span> df[<span class="st">"nmgrs2"</span>] <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> df[<span class="st">"emppt2"</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -341,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="main-analysis">Main Analysis</h2>
 <p>To make this a real replication, I use the public Card and Krueger data to reproduce key results from the original paper. I focus on Table 3 and Table 4 because these tables summarize the main findings.</p>
 <p>Replicating Table 3</p>
-<div id="6e70d8e4" class="cell" data-execution_count="4">
+<div id="a733b9ac" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pa_before <span class="op">=</span> df.loc[df[<span class="st">"state_name"</span>] <span class="op">==</span> <span class="st">"PA"</span>, <span class="st">"fte_before"</span>].mean()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>nj_before <span class="op">=</span> df.loc[df[<span class="st">"state_name"</span>] <span class="op">==</span> <span class="st">"NJ"</span>, <span class="st">"fte_before"</span>].mean()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -399,7 +399,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The table above shows the average employment levels before and after the policy change. The original paper reports very similar values (e.g., PA ≈ 23.33 and NJ ≈ 20.44 before the policy change). My replicated results closely match these values, confirming that the data has been processed correctly.</p>
 <p>Replicating Table 4 Column (i)</p>
-<div id="ebb32b72" class="cell" data-execution_count="5">
+<div id="9f222dca" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>reg_df <span class="op">=</span> df.loc[</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"fte_change"</span>].notna() <span class="op">&amp;</span> df[<span class="st">"state"</span>].notna(),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"fte_change"</span>, <span class="st">"state"</span>]</span>

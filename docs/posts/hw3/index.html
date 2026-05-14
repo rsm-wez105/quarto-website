@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Wenwen Zhang">
-<meta name="dcterms.date" content="2026-04-12">
+<meta name="dcterms.date" content="2026-05-13">
 
-<title>A/B Testing a Call to Action – Wenwen Zhang</title>
+<title>Poisson Regression and Maximum Likelihood Estimation – Wenwen Zhang</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -63,7 +63,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -107,6 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -191,14 +194,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#the-ab-test-as-a-statistical-problem" id="toc-the-ab-test-as-a-statistical-problem" class="nav-link" data-scroll-target="#the-ab-test-as-a-statistical-problem">The A/B Test as a Statistical Problem</a></li>
-  <li><a href="#simulating-data" id="toc-simulating-data" class="nav-link" data-scroll-target="#simulating-data">Simulating Data</a></li>
-  <li><a href="#the-law-of-large-numbers" id="toc-the-law-of-large-numbers" class="nav-link" data-scroll-target="#the-law-of-large-numbers">The Law of Large Numbers</a></li>
-  <li><a href="#bootstrap-standard-errors" id="toc-bootstrap-standard-errors" class="nav-link" data-scroll-target="#bootstrap-standard-errors">Bootstrap Standard Errors</a></li>
-  <li><a href="#the-central-limit-theorem" id="toc-the-central-limit-theorem" class="nav-link" data-scroll-target="#the-central-limit-theorem">The Central Limit Theorem</a></li>
-  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a></li>
-  <li><a href="#the-t-test-as-a-regression" id="toc-the-t-test-as-a-regression" class="nav-link" data-scroll-target="#the-t-test-as-a-regression">The T-Test as a Regression</a></li>
-  <li><a href="#the-problem-with-peeking" id="toc-the-problem-with-peeking" class="nav-link" data-scroll-target="#the-problem-with-peeking">The Problem with Peeking</a></li>
+  <li><a href="#exploring-the-data" id="toc-exploring-the-data" class="nav-link" data-scroll-target="#exploring-the-data">Exploring the Data</a></li>
+  <li><a href="#a-simple-poisson-model-via-maximum-likelihood" id="toc-a-simple-poisson-model-via-maximum-likelihood" class="nav-link" data-scroll-target="#a-simple-poisson-model-via-maximum-likelihood">A Simple Poisson Model via Maximum Likelihood</a></li>
+  <li><a href="#poisson-regression" id="toc-poisson-regression" class="nav-link" data-scroll-target="#poisson-regression">Poisson Regression</a></li>
+  <li><a href="#the-effect-of-blueprintys-software" id="toc-the-effect-of-blueprintys-software" class="nav-link" data-scroll-target="#the-effect-of-blueprintys-software">The Effect of Blueprinty’s Software</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -207,8 +207,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A/B Testing a Call to Action</h1>
-<p class="subtitle lead">Simulating Key Ideas from Classical Frequentist Statistics</p>
+<h1 class="title">Poisson Regression and Maximum Likelihood Estimation</h1>
+<p class="subtitle lead">A Case Study of Blueprinty’s Software and Patent Awards</p>
 </div>
 
 
@@ -225,7 +225,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 12, 2026</p>
+      <p class="date">May 13, 2026</p>
     </div>
   </div>
   
@@ -239,83 +239,84 @@ window.Quarto = {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this post, I look at a simple A/B test for a call-to-action (CTA) on a website. The idea is to see which version of the CTA gets more people to sign up.</p>
-<p>On the homepage, visitors will see one of two different messages. For example, one version might say “Sign up for our newsletter here!” while the other might say “Stay up to date by signing up!”. Even though they are similar, small differences in wording might affect how users respond.</p>
-<p>An A/B test works by randomly assigning users to one of the two versions. Then we compare how many people sign up in each group. By comparing these results, we can get a sense of which CTA performs better.ii</p>
+<p>Blueprinty is a company that provides software designed to help engineering firms prepare patent applications. The company claims that using its software improves the chances of getting patents approved.</p>
+<p>To study this, Blueprinty collected data on 1,500 mature engineering firms. For each firm, we observe the number of patents awarded over the past five years, whether the firm is a Blueprinty customer, as well as information such as firm age and region.</p>
+<p>At first glance, it might seem straightforward to compare patent counts between customers and non-customers. However, this comparison is not necessarily causal. Firms that choose to use Blueprinty’s software may already differ in important ways, such as being more experienced or located in more innovative regions. Because of this, any observed difference in patent outcomes may reflect these underlying characteristics rather than the effect of the software itself.</p>
+<p>In this post, I use a Poisson model and maximum likelihood estimation (MLE) to analyze the relationship between Blueprinty usage and patent counts, while accounting for the structure of the data.</p>
 </section>
-<section id="the-ab-test-as-a-statistical-problem" class="level2">
-<h2 class="anchored" data-anchor-id="the-ab-test-as-a-statistical-problem">The A/B Test as a Statistical Problem</h2>
-<p>To think about this A/B test statistically, I treat each user outcome as binary: either the person signs up or does not sign up. Because of that, it makes sense to model each outcome with a Bernoulli distribution.</p>
-<p>The two CTA versions may lead to different sign-up rates, so I use (p_A) for the probability of signing up under CTA A and (p_B) for the probability of signing up under CTA B).</p>
-<p>What I care about most is the difference between these two probabilities, which I can write as ( = p_A - p_B ). If this difference is positive, then CTA A performs better. If it is negative, then CTA B performs better.</p>
-<p>In practice, I do not know the true values of (p_A) and (p_B), so I estimate them using the sample proportions from the data.</p>
-</section>
-<section id="simulating-data" class="level2">
-<h2 class="anchored" data-anchor-id="simulating-data">Simulating Data</h2>
-<p>In a real A/B test, we would not actually know the true values of (p_A) and (p_B). But for this simulation, I set them manually so I can see how the estimator behaves when the true difference is known.</p>
-<p>Here, I let (p_A = 0.22) and (p_B = 0.18), so the true difference is ( = 0.04 ). Then I simulate outcomes for users in each group using a Bernoulli model.</p>
-<p>By running the simulation many times, I can see how much the estimated difference changes from sample to sample, which helps show the variability in the estimates.</p>
-</section>
-<section id="the-law-of-large-numbers" class="level2">
-<h2 class="anchored" data-anchor-id="the-law-of-large-numbers">The Law of Large Numbers</h2>
-<p>The Law of Large Numbers says that as the sample size increases, the sample average will get closer to the true value. In this context, it means that as we collect more data from the A/B test, our estimate of the difference between the two CTAs should become more stable.</p>
-<p>At the beginning, when the sample size is small, the estimated difference can vary a lot due to randomness. But as we include more observations, the estimate should settle down and get closer to the true difference of 0.04.</p>
-<p>This helps explain why larger sample sizes are important in A/B testing. With more data, we can be more confident that our estimate reflects the true effect rather than random variation.</p>
-</section>
-<section id="bootstrap-standard-errors" class="level2">
-<h2 class="anchored" data-anchor-id="bootstrap-standard-errors">Bootstrap Standard Errors</h2>
-<p>After getting an estimate for the difference between the two CTAs, the next question is how precise this estimate is. In other words, we want to know how much this estimate might change if we repeated the experiment.</p>
-<p>To measure this, I use the bootstrap method. The basic idea is to repeatedly resample from the observed data and recompute the estimate each time. This allows me to approximate how much the estimate varies without relying on a closed-form formula.</p>
-<p>In this case, I take the simulated data from the previous section and draw bootstrap samples (with replacement) from both groups. For each bootstrap sample, I compute the difference in means between CTA A and CTA B. Repeating this process many times gives a collection of estimated differences.</p>
-<p>The variability of these estimates can be summarized by their standard deviation, which serves as the bootstrap standard error.</p>
-<p>For comparison, the analytical standard error for the difference in proportions is given by:</p>
-<p><span class="math display">\[
-SE(\hat{\theta}) = \sqrt{\frac{\hat{p}_A (1 - \hat{p}_A)}{n_A} + \frac{\hat{p}_B (1 - \hat{p}_B)}{n_B}}
-\]</span></p>
-<p>Here, ( _A ) and ( _B ) are the sample proportions, and ( n_A ) and ( n_B ) are the sample sizes in each group.</p>
-<p>I compare the bootstrap standard error with this analytical formula to see how close they are. If they are similar, it gives more confidence that the bootstrap approach is working as expected.</p>
-<div id="72fb1845" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<section id="exploring-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-data">Exploring the Data</h2>
+<div id="7b6f0021" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>boot_means <span class="op">=</span> []</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> np.random.choice(data, size<span class="op">=</span><span class="dv">100</span>, replace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    boot_means.append(np.mean(sample))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>plt.hist(boot_means, bins<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Bootstrap distribution"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"blueprinty.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-2-output-1.png" width="575" height="431" class="figure-img"></p>
-</figure>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">patents</th>
+<th data-quarto-table-cell-role="th">region</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">iscustomer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0</td>
+<td>Midwest</td>
+<td>32.5</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>3</td>
+<td>Southwest</td>
+<td>37.5</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>4</td>
+<td>Northwest</td>
+<td>27.0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>3</td>
+<td>Northeast</td>
+<td>24.5</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>3</td>
+<td>Southwest</td>
+<td>37.0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div>
-<p>The bootstrap distribution approximates the sampling distribution of the mean.</p>
-</section>
-<section id="the-central-limit-theorem" class="level2">
-<h2 class="anchored" data-anchor-id="the-central-limit-theorem">The Central Limit Theorem</h2>
-<p>The Central Limit Theorem says that as the sample size increases, the distribution of the sample mean becomes approximately normal, even if the original data is not normally distributed.</p>
-<p>In this case, I look at the distribution of the estimated difference in means for different sample sizes. When the sample size is small, the distribution looks more irregular and can be somewhat skewed. But as the sample size increases, the distribution becomes more symmetric and bell-shaped.</p>
-<p>This shows that for larger samples, it is reasonable to treat the sampling distribution as approximately normal. This is useful because it allows us to use standard statistical tools that rely on normality.</p>
-<p>The CLT says…</p>
-<div id="1781dd45" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<div id="034f4372" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>customers <span class="op">=</span> df[df[<span class="st">"iscustomer"</span>] <span class="op">==</span> <span class="dv">1</span>][<span class="st">"patents"</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>non_customers <span class="op">=</span> df[df[<span class="st">"iscustomer"</span>] <span class="op">==</span> <span class="dv">0</span>][<span class="st">"patents"</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> []</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> np.random.exponential(scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="dv">50</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    means.append(np.mean(sample))</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.hist(means, bins<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Sampling distribution of the mean"</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.hist(customers, bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"Customers"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.hist(non_customers, bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">"Non-customers"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Patent counts by customer status"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -324,50 +325,181 @@ SE(\hat{\theta}) = \sqrt{\frac{\hat{p}_A (1 - \hat{p}_A)}{n_A} + \frac{\hat{p}_B
 </div>
 </div>
 </div>
-<p>As we can see, the distribution becomes more bell-shaped.</p>
+<p>From the histogram, customers appear to have slightly higher patent counts on average compared to non-customers. However, the two distributions overlap quite a bit, so the difference is not very clear-cut.</p>
+<p>This suggests that while there may be a relationship between using Blueprinty and patent outcomes, it is not obvious how large the effect is just from visual inspection.</p>
 </section>
-<section id="hypothesis-testing" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-testing">Hypothesis Testing</h2>
-<p>Now that we have an estimate and its standard error, we can use them to perform a hypothesis test.</p>
-<p>The main idea is to check whether the observed difference could reasonably happen if there were actually no difference between the two CTAs. So I start with a null hypothesis that ( = 0 ).</p>
-<p>To do this, I standardize the estimate using its standard error. This gives the test statistic:</p>
+<section id="a-simple-poisson-model-via-maximum-likelihood" class="level2">
+<h2 class="anchored" data-anchor-id="a-simple-poisson-model-via-maximum-likelihood">A Simple Poisson Model via Maximum Likelihood</h2>
+<p>The outcome variable is a count — the number of patents awarded to each firm over the last five years. Because counts are non-negative integers, a Poisson model is a natural starting point for modeling this type of data.</p>
+<p>Assume that each observation follows a Poisson distribution:</p>
 <p><span class="math display">\[
-z = \frac{\hat{\theta} - 0}{SE(\hat{\theta})}
+Y_i \sim \text{Poisson}(\lambda)
 \]</span></p>
-<p>This tells us how far the estimated difference is from 0 in terms of standard errors. If this value is large in magnitude, it suggests that the observed difference is unlikely to be due to random chance.</p>
-<p>Since the sample size is large, the sampling distribution is approximately normal, so I can use the standard normal distribution to compute a p-value. This helps decide whether there is enough evidence to reject the null hypothesis.</p>
-<div id="91157133" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
+<p>The probability mass function is:</p>
+<p><span class="math display">\[
+P(Y_i = y_i \mid \lambda) = \frac{e^{-\lambda} \lambda^{y_i}}{y_i!}
+\]</span></p>
+<p>Assuming the observations are independent, the likelihood function is:</p>
+<p><span class="math display">\[
+L(\lambda) = \prod_{i=1}^{n} \frac{e^{-\lambda} \lambda^{y_i}}{y_i!}
+\]</span></p>
+<p>Taking logs, the log-likelihood becomes:</p>
+<p><span class="math display">\[
+\ell(\lambda) = \sum_{i=1}^{n} \left( y_i \log \lambda - \lambda - \log(y_i!) \right)
+\]</span></p>
+<p>To estimate <span class="math inline">\(\lambda\)</span>, I compute the log-likelihood numerically and find the value that maximizes it.</p>
+<div id="d8dff9d8" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> minimize</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> gammaln</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.mean(data) <span class="op">/</span> (np.std(data) <span class="op">/</span> np.sqrt(<span class="bu">len</span>(data)))</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>p_value <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> stats.norm.cdf(<span class="bu">abs</span>(z)))</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>z, p_value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">"patents"</span>].values</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> neg_log_likelihood(beta):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    lam <span class="op">=</span> np.exp(beta[<span class="dv">0</span>])</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    log_lik <span class="op">=</span> np.<span class="bu">sum</span>(y <span class="op">*</span> np.log(lam) <span class="op">-</span> lam <span class="op">-</span> gammaln(y <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>log_lik</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> minimize(neg_log_likelihood, x0<span class="op">=</span>[<span class="dv">0</span>])</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>beta_hat <span class="op">=</span> result.x[<span class="dv">0</span>]</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>lambda_hat <span class="op">=</span> np.exp(beta_hat)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>lambda_hat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>(np.float64(-0.5527882278544569), np.float64(0.580408430449828))</code></pre>
+<pre><code>np.float64(3.6846666635253857)</code></pre>
 </div>
 </div>
-<p>The p-value tells us whether we reject the null hypothesis. If the p-value is small, we reject the null hypothesis.</p>
+<p>The estimated value of <span class="math inline">\(\lambda\)</span> is about 3.68. This means that, according to the Poisson model, the average number of patents per firm is around 3.68 over the five-year period.</p>
+<p>To check whether this estimate makes sense, we can compare it to the sample mean of the data. Since the Poisson distribution has the property that its mean is equal to <span class="math inline">\(\lambda\)</span>, we expect the MLE estimate to be close to the sample average.</p>
+<p>In fact, the estimated value is very close to the sample mean, which suggests that the maximum likelihood estimation is working correctly. This result provides a useful sanity check and confirms that the Poisson model is capturing the overall level of patent activity in the data.</p>
+<p>However, this simple model does not yet account for differences between firms, such as whether they are Blueprinty customers or their age and region.</p>
+<div id="e0a9c0ef" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lambdas <span class="op">=</span> np.linspace(<span class="fl">0.1</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>log_lik_vals <span class="op">=</span> []</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> lam <span class="kw">in</span> lambdas:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    log_lik <span class="op">=</span> np.<span class="bu">sum</span>(y <span class="op">*</span> np.log(lam) <span class="op">-</span> lam <span class="op">-</span> gammaln(y <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    log_lik_vals.append(log_lik)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.plot(lambdas, log_lik_vals)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.axvline(lambda_hat, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">"MLE"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Log-likelihood function"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Lambda"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Log-likelihood"</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-5-output-1.png" width="621" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The log-likelihood curve reaches its maximum at a value of λ close to 3.7, which matches the estimate obtained from numerical optimization. This provides a visual confirmation that the maximum likelihood estimate corresponds to the value of λ that best fits the observed data.</p>
+<p>From the shape of the curve, we can also see that the log-likelihood increases rapidly at first and then gradually decreases, indicating that values of λ far from the optimum provide a much worse fit to the data.</p>
 </section>
-<section id="the-t-test-as-a-regression" class="level2">
-<h2 class="anchored" data-anchor-id="the-t-test-as-a-regression">The T-Test as a Regression</h2>
-<p>It turns out that the two-sample test we used earlier can also be written as a simple regression. This provides another way to understand the same problem.</p>
-<p>To set this up, I combine the data from both groups into a single dataset. The outcome variable (Y_i) indicates whether a user signed up (1) or not (0), and the variable (D_i) indicates which CTA the user saw (1 for A, 0 for B).</p>
-<p>The regression model is:</p>
+<section id="poisson-regression" class="level2">
+<h2 class="anchored" data-anchor-id="poisson-regression">Poisson Regression</h2>
+<p>In the previous section, I assumed that all firms share the same expected patent rate <span class="math inline">\(\lambda\)</span>. However, this is a strong assumption, since firms differ in characteristics such as age, region, and whether they use Blueprinty’s software.</p>
+<p>To allow for this, I extend the model to a Poisson regression:</p>
 <p><span class="math display">\[
-Y_i = \beta_0 + \beta_1 D_i + \varepsilon_i
+Y_i \sim \text{Poisson}(\lambda_i), \quad \text{where} \quad \lambda_i = \exp(X_i \beta)
 \]</span></p>
-<p>In this model, ( _0 ) represents the average outcome for group B, while ( _1 ) captures the difference between group A and group B. So ( _1 ) corresponds directly to the difference in sign-up rates that we have been estimating throughout the analysis.</p>
-<p>This shows that the regression approach and the two-sample test are closely related. They give the same estimate for the difference, but the regression framework is more flexible and can be extended to more complex settings.</p>
+<p>The exponential link function ensures that <span class="math inline">\(\lambda_i\)</span> is always positive, which is required for a Poisson distribution.</p>
+<p>In this model, the expected number of patents depends on firm characteristics, including whether the firm is a Blueprinty customer.</p>
+<div id="60df4c4b" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df[[<span class="st">"iscustomer"</span>, <span class="st">"age"</span>]]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>poisson_model <span class="op">=</span> sm.GLM(df[<span class="st">"patents"</span>], X, family<span class="op">=</span>sm.families.Poisson()).fit()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>summary_table <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Coefficient"</span>: poisson_model.params,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Std. Error"</span>: poisson_model.bse,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"p-value"</span>: poisson_model.pvalues</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>summary_table.<span class="bu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Coefficient</th>
+<th data-quarto-table-cell-role="th">Std. Error</th>
+<th data-quarto-table-cell-role="th">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">const</th>
+<td>1.502</td>
+<td>0.051</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">iscustomer</th>
+<td>0.181</td>
+<td>0.028</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">age</th>
+<td>-0.010</td>
+<td>0.002</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The coefficient on <code>iscustomer</code> is positive (about 0.18), which suggests that firms using Blueprinty’s software tend to have higher patent counts compared to non-customers.</p>
+<p>Since the model is log-linear, this coefficient can be interpreted in percentage terms. Specifically, exp(0.18) ≈ 1.20, which implies about a 20% increase in expected patent counts.</p>
+<p>The coefficient on age is slightly negative (around -0.01), indicating that older firms tend to have slightly fewer patents, although the effect is relatively small in magnitude.</p>
+<p>Overall, the results suggest a positive relationship between Blueprinty usage and patent outcomes. However, this should not be interpreted as a causal effect, since firms are not randomly assigned to use the software. The observed difference may reflect underlying differences in firm characteristics rather than the impact of the software itself.</p>
 </section>
-<section id="the-problem-with-peeking" class="level2">
-<h2 class="anchored" data-anchor-id="the-problem-with-peeking">The Problem with Peeking</h2>
-<p>In practice, it can be tempting to check the results of an experiment early and stop as soon as we see a significant result. However, this can lead to incorrect conclusions.</p>
-<p>The issue is that each time we look at the data and run a hypothesis test, there is a chance of getting a false positive. Even if the null hypothesis is true, a single test at the 5% level has a small probability of incorrectly rejecting it. But if we repeatedly check the results, these probabilities start to add up.</p>
-<p>To see this more clearly, I simulate a situation where there is actually no difference between the two CTAs. Then I repeatedly check for significance as more data is added. Even though the null hypothesis is true, I often find at least one “significant” result just by chance.</p>
-<p>This shows that peeking inflates the false positive rate. In other words, it makes us more likely to incorrectly conclude that there is a difference when there is none. This is why it is important to decide on a sample size in advance and avoid checking results too frequently during an experiment.</p>
+<section id="the-effect-of-blueprintys-software" class="level2">
+<h2 class="anchored" data-anchor-id="the-effect-of-blueprintys-software">The Effect of Blueprinty’s Software</h2>
+<div id="d3b14805" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>X0 <span class="op">=</span> X.copy()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> X.copy()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>X0[<span class="st">"iscustomer"</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>X1[<span class="st">"iscustomer"</span>] <span class="op">=</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="92a53615" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y_hat_0 <span class="op">=</span> poisson_model.predict(X0)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y_hat_1 <span class="op">=</span> poisson_model.predict(X1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="77af2069" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>effect <span class="op">=</span> (y_hat_1 <span class="op">-</span> y_hat_0).mean()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>effect</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>np.float64(0.6887754455548759)</code></pre>
+</div>
+</div>
+<p>To better understand the effect of Blueprinty’s software, I construct two counterfactual scenarios. In the first scenario, I assume that no firms use the software. In the second, I assume that all firms use it, while keeping all other characteristics fixed.</p>
+<p>Using the fitted Poisson model, I predict the expected number of patents for each firm under both scenarios. The average difference between these predictions is about 0.69 patents per firm.</p>
+<p>This means that, according to the model, using Blueprinty’s software is associated with an increase of about 0.69 patents over the five-year period.</p>
+<p>However, this estimate should be interpreted with caution. Since firms are not randomly assigned to use the software, the observed difference may reflect underlying differences in firm characteristics, such as experience or location, rather than the causal impact of Blueprinty’s product.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In this post, I used a Poisson model and maximum likelihood estimation to analyze the relationship between Blueprinty’s software and patent outcomes.</p>
+<p>The results show that firms using Blueprinty’s software tend to have higher patent counts, and the regression analysis suggests about a 20% increase in expected patents. The counterfactual analysis further indicates an average increase of about 0.69 patents per firm over five years.</p>
+<p>However, these results should not be interpreted as causal. Since firms are not randomly assigned to use the software, the observed differences may reflect underlying characteristics rather than the effect of Blueprinty’s product itself.</p>
+<p>Overall, while the evidence is consistent with Blueprinty’s claim, a stronger research design would be needed to establish a causal relationship.</p>
 
 
 </section>
