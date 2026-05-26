@@ -274,7 +274,7 @@ SE(\hat{\theta}) = \sqrt{\frac{\hat{p}_A (1 - \hat{p}_A)}{n_A} + \frac{\hat{p}_B
 \]</span></p>
 <p>Here, ( _A ) and ( _B ) are the sample proportions, and ( n_A ) and ( n_B ) are the sample sizes in each group.</p>
 <p>I compare the bootstrap standard error with this analytical formula to see how close they are. If they are similar, it gives more confidence that the bootstrap approach is working as expected.</p>
-<div id="2ddfd831" class="cell" data-execution_count="1">
+<div id="9ad24812" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -304,7 +304,7 @@ SE(\hat{\theta}) = \sqrt{\frac{\hat{p}_A (1 - \hat{p}_A)}{n_A} + \frac{\hat{p}_B
 <p>In this case, I look at the distribution of the estimated difference in means for different sample sizes. When the sample size is small, the distribution looks more irregular and can be somewhat skewed. But as the sample size increases, the distribution becomes more symmetric and bell-shaped.</p>
 <p>This shows that for larger samples, it is reasonable to treat the sampling distribution as approximately normal. This is useful because it allows us to use standard statistical tools that rely on normality.</p>
 <p>The CLT says…</p>
-<div id="e9fd3bff" class="cell" data-execution_count="2">
+<div id="82919815" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -336,7 +336,7 @@ z = \frac{\hat{\theta} - 0}{SE(\hat{\theta})}
 \]</span></p>
 <p>This tells us how far the estimated difference is from 0 in terms of standard errors. If this value is large in magnitude, it suggests that the observed difference is unlikely to be due to random chance.</p>
 <p>Since the sample size is large, the sampling distribution is approximately normal, so I can use the standard normal distribution to compute a p-value. This helps decide whether there is enough evidence to reject the null hypothesis.</p>
-<div id="11571485" class="cell" data-execution_count="3">
+<div id="804652b6" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
@@ -346,7 +346,7 @@ z = \frac{\hat{\theta} - 0}{SE(\hat{\theta})}
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>z, p_value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>(np.float64(1.8135129673917347), np.float64(0.06975274041755508))</code></pre>
+<pre><code>(np.float64(0.6665059829253613), np.float64(0.5050877407935686))</code></pre>
 </div>
 </div>
 <p>The p-value tells us whether we reject the null hypothesis. If the p-value is small, we reject the null hypothesis.</p>
@@ -446,7 +446,7 @@ Y_i = \beta_0 + \beta_1 D_i + \varepsilon_i
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/rsm-wez105\.github\.io\/quarto-website\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

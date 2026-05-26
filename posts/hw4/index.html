@@ -252,7 +252,7 @@ window.Quarto = {
 <p>The main dataset contains the MaxDiff survey design and respondents’ choices. Each row corresponds to one item shown to a respondent during a particular task.</p>
 <p>The <code>Response</code> variable records whether the item was selected as the most preferred option (<code>1</code>), the least preferred option (<code>-1</code>), or neither (<code>0</code>).</p>
 <p>I also load a separate lookup table that maps item numbers to the actual MSBA class names.</p>
-<div id="0a1cce30" class="cell" data-execution_count="1">
+<div id="195035ae" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -307,7 +307,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="31375377" class="cell" data-execution_count="2">
+<div id="aa2c7293" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> labels.iloc[:, :<span class="dv">2</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>labels.columns <span class="op">=</span> [<span class="st">"Item"</span>, <span class="st">"Class"</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -357,7 +357,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Before beginning the analysis, I first check whether the MaxDiff tasks are structured correctly. In a valid MaxDiff task, each respondent should see four items, select exactly one “best” item and one “worst” item, and leave the remaining two items unselected.</p>
-<div id="a226601d" class="cell" data-execution_count="3">
+<div id="8a324843" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>task_check <span class="op">=</span> raw.groupby([<span class="st">"Record ID"</span>, <span class="st">"Task"</span>])[<span class="st">"Response"</span>].agg(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    best_count<span class="op">=</span><span class="kw">lambda</span> x: (x <span class="op">==</span> <span class="dv">1</span>).<span class="bu">sum</span>(),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    worst_count<span class="op">=</span><span class="kw">lambda</span> x: (x <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>).<span class="bu">sum</span>(),</span>
@@ -434,7 +434,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="d7b0ec1c" class="cell" data-execution_count="4">
+<div id="4a0eaec2" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>task_check[[<span class="st">"best_count"</span>, <span class="st">"worst_count"</span>, <span class="st">"neutral_count"</span>, <span class="st">"total_rows"</span>]].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>best_count  worst_count  neutral_count  total_rows
@@ -445,7 +445,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 <p>The sanity check shows that the dataset contains two different task structures. One group of tasks follows the expected MaxDiff format, with one best choice, one worst choice, two neutral items, and four total rows.</p>
 <p>However, another group of tasks contains only two rows, with one best choice and one worst choice but no neutral items. Since these do not match the standard MaxDiff design used in class, I exclude them from the analysis and keep only the tasks with four displayed items.</p>
-<div id="7082dd76" class="cell" data-execution_count="5">
+<div id="1676cc28" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>task_sizes <span class="op">=</span> raw.groupby([<span class="st">"Record ID"</span>, <span class="st">"Task"</span>]).size().reset_index(name<span class="op">=</span><span class="st">"n_rows"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>valid_tasks <span class="op">=</span> task_sizes[task_sizes[<span class="st">"n_rows"</span>] <span class="op">==</span> <span class="dv">4</span>][[<span class="st">"Record ID"</span>, <span class="st">"Task"</span>]]</span>
@@ -515,7 +515,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="7e7b4d66" class="cell" data-execution_count="6">
+<div id="ef0f6188" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Statistic"</span>: [</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Number of respondents"</span>,</span>
@@ -582,7 +582,7 @@ Name: count, dtype: int64</code></pre>
 \text{score}_j = \% \text{best}_j - \% \text{worst}_j
 \]</span></p>
 <p>A positive score means the class was chosen as best more often than worst, while a negative score means the opposite. This is not a full statistical model, but it gives a useful first look at the preference ranking.</p>
-<div id="2b8ce470" class="cell" data-execution_count="7">
+<div id="72e8fefb" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> (</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    df.groupby(<span class="st">"Item"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
@@ -728,7 +728,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="6dce6703" class="cell" data-execution_count="8">
+<div id="6e41d9bb" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> counts_table.sort_values(<span class="st">"score"</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
@@ -770,7 +770,7 @@ P(\\text{worst} = c \\mid \\text{best} = b) =
 \]</span></p>
 <p>As a result, each MaxDiff task contributes two MNL-style observations: one for the best choice and one for the worst choice.</p>
 <p>One important issue is that the model is only identified up to an additive constant. Adding the same number to every utility value does not change the choice probabilities. To solve this problem, I normalize one class coefficient to zero and estimate the remaining coefficients relative to that reference class.</p>
-<div id="0e7225de" class="cell" data-execution_count="9">
+<div id="14d31c70" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tasks <span class="op">=</span> []</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (rid, task_id), g <span class="kw">in</span> df.groupby([<span class="st">"Record ID"</span>, <span class="st">"Task"</span>]):</span>
@@ -873,7 +873,7 @@ P(\\text{worst} = c \\mid \\text{best} = b) =
 \]</span></p>
 <p>Here, (b_t) is the item chosen as best in task (t), (w_t) is the item chosen as worst, and (C_t) is the set of four items shown in that task.</p>
 <p>Because only differences in utility matter in the softmax model, I set the utility of item 1 to zero and estimate the other nine utilities relative to it.</p>
-<div id="76391a61" class="cell" data-execution_count="10">
+<div id="0ba6af84" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> logsumexp</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>item_ids <span class="op">=</span> <span class="bu">sorted</span>(df[<span class="st">"Item"</span>].unique())</span>
@@ -906,7 +906,7 @@ P(\\text{worst} = c \\mid \\text{best} = b) =
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>beta_hat <span class="op">=</span> make_beta(theta_hat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="586e02a5" class="cell" data-execution_count="11">
+<div id="0e4239bb" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>theta_hat <span class="op">=</span> theta_hat</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>beta_hat <span class="op">=</span> make_beta(theta_hat)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1046,7 +1046,7 @@ P(\\text{worst} = c \\mid \\text{best} = b) =
 </div>
 </div>
 </div>
-<div id="73fe9c21" class="cell" data-execution_count="12">
+<div id="ba242f77" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mle_plot <span class="op">=</span> mle_table.sort_values(<span class="st">"Preference Share"</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">6</span>))</span>
@@ -1078,7 +1078,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 \]</span></p>
 <p>I use a weakly informative normal prior centered at zero. This keeps the estimates from becoming extreme, but still allows the data to drive the results. I use the same normalization as before, setting item 1 equal to zero and estimating the remaining nine coefficients.</p>
 <p>To sample from the posterior, I use a random-walk Metropolis-Hastings algorithm. At each step, the sampler proposes a small change to the current coefficient vector. If the proposed values improve the posterior fit, they are likely to be accepted; if not, they may still be accepted with some probability.</p>
-<div id="68771d69" class="cell" data-execution_count="13">
+<div id="d8505792" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> logsumexp</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> neg_log_likelihood(theta):</span>
@@ -1099,7 +1099,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 <span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>ll</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="06cac38e" class="cell" data-execution_count="14">
+<div id="c1d59f15" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">123</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_prior(theta):</span>
@@ -1139,7 +1139,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 </div>
 </div>
 <p>The acceptance rate is in a reasonable range for a random-walk Metropolis sampler. This suggests that the proposal step size is working reasonably well and the chain is able to explore the posterior distribution without getting stuck.</p>
-<div id="ce8fda5c" class="cell" data-execution_count="15">
+<div id="4e6bfe89" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>burn_in <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>post_draws <span class="op">=</span> draws[burn_in:]</span>
@@ -1185,7 +1185,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 </div>
 <p>The trace plots fluctuate around relatively stable values rather than drifting systematically upward or downward. This suggests that the Metropolis-Hastings sampler has stabilized after the burn-in period and is exploring the posterior distribution reasonably well.</p>
 <p>The chains also appear to move around the parameter space without getting stuck for long periods of time, which is consistent with the reasonable acceptance rate observed earlier.</p>
-<div id="b9a3cb22" class="cell" data-execution_count="16">
+<div id="3ba47bf0" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>post_mean <span class="op">=</span> post_draws.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>post_low <span class="op">=</span> np.percentile(post_draws, <span class="fl">2.5</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>post_high <span class="op">=</span> np.percentile(post_draws, <span class="fl">97.5</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
@@ -1335,7 +1335,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 </div>
 </div>
 </div>
-<div id="55b0119c" class="cell" data-execution_count="17">
+<div id="42bb539e" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>bayes_plot <span class="op">=</span> bayes_table.sort_values(<span class="st">"Posterior Mean Share"</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">6</span>))</span>
@@ -1359,7 +1359,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 <section id="comparing-the-three-methods" class="level2">
 <h2 class="anchored" data-anchor-id="comparing-the-three-methods">Comparing the Three Methods</h2>
 <p>To compare the three approaches, I combine the main results from the counts analysis, the MLE model, and the Bayesian model into a single table.</p>
-<div id="d255869d" class="cell" data-execution_count="18">
+<div id="f1db5643" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>comparison <span class="op">=</span> counts_table.merge(</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    mle_table[[<span class="st">"Class"</span>, <span class="st">"Preference Share"</span>]],</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    on<span class="op">=</span><span class="st">"Class"</span>,</span>
@@ -1530,7 +1530,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
 </div>
 </div>
 </div>
-<div id="7db2f10e" class="cell" data-execution_count="19">
+<div id="4c33f4e5" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">16</span>))</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>counts_plot <span class="op">=</span> comparison.sort_values(<span class="st">"Counts Score"</span>)</span>
@@ -1668,7 +1668,7 @@ L(\boldsymbol{\beta}) \pi(\boldsymbol{\beta})
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/rsm-wez105\.github\.io\/quarto-website\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
