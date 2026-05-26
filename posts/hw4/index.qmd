@@ -236,6 +236,7 @@ Here, \(b_t\) is the item chosen as best in task \(t\), \(w_t\) is the item chos
 
 Because only differences in utility matter in the softmax model, I set the utility of item 1 to zero and estimate the other nine utilities relative to it.
 
+Because the numerical optimization can take a long time during rendering, I save the converged MLE estimates from the optimization step and reuse them in the remaining analysis.
 ```{python}
 from scipy.special import logsumexp
 
