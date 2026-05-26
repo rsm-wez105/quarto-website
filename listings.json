@@ -1,0 +1,18 @@
+[
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/ab-test/index.html",
+      "/posts/hw4/index.html",
+      "/posts/hw2/index.html",
+      "/posts/hw3/index.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/project1/index.html",
+      "/projects/project2/index.html"
+    ]
+  }
+]
