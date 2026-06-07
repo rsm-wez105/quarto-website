@@ -4,7 +4,7 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "A/B Testing a Call to Action\n\n\nSimulating Key Ideas from Classical Frequentist Statistics\n\n\n\n\n\n\n\n\nApr 12, 2026\n\n\nWenwen Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nMaxDiff Analysis of MSBA Class Preferences\n\n\nCounts, MLE, and Bayesian Estimation of the MNL Model\n\n\n\n\n\n\n\n\nMay 25, 2026\n\n\nWenwen Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nMinimum Wage and Employment: A Replication of Card and Krueger (1994)\n\n\nA Difference-in-Differences Analysis\n\n\n\n\n\n\n\n\nApr 21, 2026\n\n\nWenwen Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nPoisson Regression and Maximum Likelihood Estimation\n\n\nA Case Study of Blueprinty’s Software and Patent Awards\n\n\n\n\n\n\n\n\nMay 13, 2026\n\n\nWenwen Zhang\n\n\n\n\n\nNo matching items"
+    "text": "A/B Testing a Call to Action\n\n\nSimulating Key Ideas from Classical Frequentist Statistics\n\n\n\n\n\n\n\n\nApr 12, 2026\n\n\nWenwen Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nKey Drivers Analysis\n\n\n\n\n\n\n\n\n\n\n\nJun 6, 2026\n\n\nWenwen Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nMaxDiff Analysis of MSBA Class Preferences\n\n\nCounts, MLE, and Bayesian Estimation of the MNL Model\n\n\n\n\n\n\n\n\nMay 25, 2026\n\n\nWenwen Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nMinimum Wage and Employment: A Replication of Card and Krueger (1994)\n\n\nA Difference-in-Differences Analysis\n\n\n\n\n\n\n\n\nApr 21, 2026\n\n\nWenwen Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nPoisson Regression and Maximum Likelihood Estimation\n\n\nA Case Study of Blueprinty’s Software and Patent Awards\n\n\n\n\n\n\n\n\nMay 13, 2026\n\n\nWenwen Zhang\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -299,5 +299,173 @@
     "title": "About",
     "section": "",
     "text": "This website collects selected coursework, projects, and blog posts. It is organized to make the work easier to browse and understand."
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#a-global-pricing-puzzle",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#a-global-pricing-puzzle",
+    "title": "Why Does the Same Starbucks Drink Have Different Prices Around the World?",
+    "section": "A Global Pricing Puzzle",
+    "text": "A Global Pricing Puzzle\n\n\n\n\n\n\n☕ Tall Latte Prices ━━━━━━━━━━━━━━ 🇹🇷 Turkey: $1.31 🇺🇸 USA: $3.26 🇨🇳 China: $4.23 🇨🇭 Switzerland: $7.17\n\n\n💡 Key Observation: ━━━━━━━━━━━━━━ The same Starbucks Tall Latte can cost more than five times as much across countries."
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#why-are-prices-different",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#why-are-prices-different",
+    "title": "Why Does the Same Starbucks Drink Have Different Prices Around the World?",
+    "section": "Why Are Prices Different?",
+    "text": "Why Are Prices Different?\n\n━━━━━━━━━━━━\n\n\n\n\n💰 Income Levels\n\n\n\nGDP per capita (2023)\n\n\n• Switzerland ≈ $99,000 • Turkey ≈ $13,000\n\n\nHigher incomes support higher willingness to pay.\n\n\n\n\n🏪 Competition\n\n\n\nStarbucks vs. Luckin Coffee\n\n\nLocal competitors can limit pricing power.\n\n\n\n\n⭐ Brand Positioning\n\n\n\nStarbucks Reserve\n\n\nPremium positioning can increase willingness to pay.\n\n\n\n\n💡 Key idea: income, competition, and brand positioning shape how much customers are willing to pay."
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#yaml",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#yaml",
+    "title": "Why Does the Same Starbucks Drink Cost Different Prices Around the World?",
+    "section": "```yaml",
+    "text": "```yaml\ntitle: “Why Does the Same Starbucks Drink Cost Different Prices Around the World?” subtitle: “A Marketing Analytics Perspective” author: “Wenwen Zhang”\nformat: revealjs: embed-resources: true smaller: true theme: simple slide-number: true — ## A Global Pricing Puzzle\n\n\n\n\n  \nSame drink, very different prices\n🇹🇷 Turkey $1.31\n🇺🇸 USA $3.26\n🇨🇳 China $4.23\n🇨🇭 Switzerland $7.17\n\nThe same Starbucks Tall Latte can cost more than five times as much depending on the country.\n\nWhy Are Prices Different?\n\n\n💰 Income Levels\n\nGDP per capita (2023)\nSwitzerland ≈ $99,000\nTurkey ≈ $13,000\nHigher incomes generally support higher willingness to pay.\n\n🏪 Competition\n\nStarbucks vs. Luckin Coffee\nLocal competitors can affect Starbucks’ pricing power.\n\n⭐ Brand Positioning\n\nStarbucks Reserve Roastery\nPremium positioning can increase willingness to pay.\n\nKey Idea\nIncome, competition, and brand positioning shape how much customers are willing to pay."
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#competition",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#competition",
+    "title": "Why Does the Same Starbucks Drink Cost Different Prices Around the World?",
+    "section": "Competition",
+    "text": "Competition\n\nStarbucks faces strong local competition from Luckin Coffee in China."
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#brand-positioning",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#brand-positioning",
+    "title": "Why Does the Same Starbucks Drink Cost Different Prices Around the World?",
+    "section": "Brand Positioning",
+    "text": "Brand Positioning\n\nPremium Starbucks Reserve locations create a higher-value customer experience. ```"
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#what-does-this-mean-for-starbucks",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#what-does-this-mean-for-starbucks",
+    "title": "Why Does the Same Starbucks Drink Cost Different Prices Around the World?",
+    "section": "What Does This Mean for Starbucks?",
+    "text": "What Does This Mean for Starbucks?\n\n\n\n💰 Income-Based Pricing\n\nHigher-income countries can sustain premium prices because consumers have greater purchasing power.\n\n\n\n🏪 Competitive Response\n\nIn markets with strong local rivals, Starbucks may need more competitive pricing or promotions.\n\n\n\n⭐ Premium Branding\n\nReserve stores and brand prestige help Starbucks justify higher prices in selected markets.\n\n\n\n\nManagerial Takeaway:\nStarbucks does not simply sell coffee—it uses localized pricing strategies that reflect income levels, competitive intensity, and brand positioning in each market."
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#what-drives-willingness-to-pay",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#what-drives-willingness-to-pay",
+    "title": "Why Does the Same Starbucks Drink Cost Different Prices Around the World?",
+    "section": "What Drives Willingness to Pay?",
+    "text": "What Drives Willingness to Pay?\n\nConsumers choose the option that provides the highest utility.\n\n\n\n\n\nDrivers\n\nOutcome\n\n\n\n\n💰 Income\n➜\nUtility\n\n\n⭐ Brand Image\n➜\nUtility\n\n\n☕ Store Experience\n➜\nUtility\n\n\n📍 Convenience\n➜\nUtility\n\n\n\n\n\nUtility\n⬇️\nWillingness to Pay\n⬇️\nPrice\n\n\n\n💡 Key Insight:\nDifferent markets create different levels of utility, leading to different willingness to pay and ultimately different prices."
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#linking-starbucks-pricing-to-consumer-utility",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#linking-starbucks-pricing-to-consumer-utility",
+    "title": "Why Does the Same Starbucks Drink Cost Different Prices Around the World?",
+    "section": "Linking Starbucks Pricing to Consumer Utility",
+    "text": "Linking Starbucks Pricing to Consumer Utility\nConsumers choose the option that provides the highest utility.\n\n\n\n\nDrivers of Utility\nPricing Outcome\n\n\n\n\n• Higher income\n• Higher willingness to pay\n\n\n• Strong brand image\n• Lower price sensitivity\n\n\n• Premium store experience\n• Ability to charge premium prices\n\n\n• Convenient locations\n• Greater pricing power\n\n\n\n\nKey Insight\nStarbucks can maintain different prices across countries because customers derive different levels of utility from the brand.\nIn the Random Utility Framework:\nHigher Utility → Higher Willingness to Pay → Higher Optimal Price"
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#what-can-marketers-learn",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#what-can-marketers-learn",
+    "title": "Why Does the Same Starbucks Drink Have Different Prices Around the World?",
+    "section": "What Can Marketers Learn?",
+    "text": "What Can Marketers Learn?\n\nGlobal pricing should match local customer value, not simply production cost.\n\n\n\n\n💰\n\n\nOne Price Does Not Fit All\n\nConsumers differ in purchasing power and willingness to pay.\n\n\n\n🏪\n\n\nCompetition Matters\n\nLocal rivals can limit pricing power and require promotions.\n\n\n\n⭐\n\n\nBrand Creates Pricing Power\n\nPremium brand perception allows firms to charge higher prices.\n\n\n\n\nCustomer Value   →   Willingness to Pay   →   Pricing Decision\n\n\n\n📌 Managerial Implication:\nSuccessful global pricing requires firms to adapt prices to local customer value rather than applying a single global price worldwide."
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#final-takeaway",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#final-takeaway",
+    "title": "Why Does the Same Starbucks Drink Cost Different Prices Around the World?",
+    "section": "Final Takeaway",
+    "text": "Final Takeaway\n\nWhat explains global price differences?\n\n\n\nIncome, competition, and brand positioning influence the utility consumers receive from Starbucks.\n\nHigher Utility → Higher Willingness to Pay → Higher Optimal Price\n\n\n\n💡 Key Message\nStarbucks charges different prices across countries because customers perceive different levels of value.\n\nThis illustrates a central idea in pricing analytics:\n\nPrice reflects customer value, not simply production cost."
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#conclusion",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#conclusion",
+    "title": "Why Does the Same Starbucks Drink Cost Different Prices Around the World?",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nWhat did we learn from Starbucks’ global pricing strategy?\n\n\n\n\n\n🌍 Global Markets Differ\n\nCustomers around the world have different needs, preferences, and purchasing power.\n\n\n\n☕ Value Is Perceived\n\nConsumers are not only buying coffee—they are buying convenience, experience, and brand value.\n\n\n\n📈 Pricing Is Strategic\n\nSuccessful companies adapt prices to local market conditions rather than using one global price.\n\n\n\n\n💡 Final Message\nThe same Starbucks drink can have very different prices because customers perceive different levels of value.\nPrice reflects customer value, not simply production cost.\n\n```"
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#key-takeaways",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#key-takeaways",
+    "title": "Why Does the Same Starbucks Drink Have Different Prices Around the World?",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\n\n\n\n🌍 Global Markets Differ\n\nCustomers around the world have different needs, preferences, purchasing power, and consumption habits.\n\n\n\n☕ Value Is Perceived\n\nConsumers are not only buying coffee—they are buying convenience, experience, and brand value.\n\n\n\n📈 Pricing Is Strategic\n\nSuccessful companies adapt prices to local market conditions rather than using one global price.\n\n\n\n\n💡 Final Message\nThe same Starbucks drink can command very different prices across markets because customers perceive different levels of value and utility.\n\nSuccessful pricing is not about what a product costs to make— it is about what customers believe it is worth."
+  },
+  {
+    "objectID": "presentation/zhang_wenwen-starbucks_pricing.html#thank-you",
+    "href": "presentation/zhang_wenwen-starbucks_pricing.html#thank-you",
+    "title": "Why Does the Same Starbucks Drink Cost Different Prices Around the World?",
+    "section": "Thank You!",
+    "text": "Thank You!"
+  },
+  {
+    "objectID": "presentation/Zhang_Wenwen-starbucks_pricing.html#a-global-pricing-puzzle",
+    "href": "presentation/Zhang_Wenwen-starbucks_pricing.html#a-global-pricing-puzzle",
+    "title": "Why Does the Same Starbucks Drink Have Different Prices Around the World?",
+    "section": "A Global Pricing Puzzle",
+    "text": "A Global Pricing Puzzle\n\n\n\n\n\n\n☕ Tall Latte Prices ━━━━━━━━━━━━━━ 🇹🇷 Turkey: $1.31 🇺🇸 USA: $3.26 🇨🇳 China: $4.23 🇨🇭 Switzerland: $7.17\n\n\n💡 Key Observation: ━━━━━━━━━━━━━━ The same Starbucks Tall Latte can cost more than five times as much across countries."
+  },
+  {
+    "objectID": "presentation/Zhang_Wenwen-starbucks_pricing.html#why-are-prices-different",
+    "href": "presentation/Zhang_Wenwen-starbucks_pricing.html#why-are-prices-different",
+    "title": "Why Does the Same Starbucks Drink Have Different Prices Around the World?",
+    "section": "Why Are Prices Different?",
+    "text": "Why Are Prices Different?\n\n━━━━━━━━━━━━\n\n\n\n\n💰 Income Levels\n\n\n\nGDP per capita (2023)\n\n\n• Switzerland ≈ $99,000 • Turkey ≈ $13,000\n\n\nHigher incomes support higher willingness to pay.\n\n\n\n\n🏪 Competition\n\n\n\nStarbucks vs. Luckin Coffee\n\n\nLocal competitors can limit pricing power.\n\n\n\n\n⭐ Brand Positioning\n\n\n\nStarbucks Reserve\n\n\nPremium positioning can increase willingness to pay.\n\n\n\n\n💡 Key idea: Income, competition, and brand positioning are key drivers of customer value, which in turn shapes willingness to pay."
+  },
+  {
+    "objectID": "presentation/Zhang_Wenwen-starbucks_pricing.html#what-can-marketers-learn",
+    "href": "presentation/Zhang_Wenwen-starbucks_pricing.html#what-can-marketers-learn",
+    "title": "Why Does the Same Starbucks Drink Have Different Prices Around the World?",
+    "section": "What Can Marketers Learn?",
+    "text": "What Can Marketers Learn?\n\nGlobal pricing should match local customer value, not simply production cost.\n\n\n\n\n💰\n\n\nOne Price Does Not Fit All\n\nConsumers differ in purchasing power and willingness to pay.\n\n\n\n🏪\n\n\nCompetition Matters\n\nLocal rivals can limit pricing power and require promotions.\n\n\n\n⭐\n\n\nBrand Creates Pricing Power\n\nPremium brand perception allows firms to charge higher prices.\n\n\n\n\nCustomer Value   →   Willingness to Pay   →   Pricing Decision\n\n\n\n📌 Managerial Implication:\nSuccessful global pricing requires firms to adapt prices to local customer value rather than applying a single global price worldwide."
+  },
+  {
+    "objectID": "presentation/Zhang_Wenwen-starbucks_pricing.html#key-takeaways",
+    "href": "presentation/Zhang_Wenwen-starbucks_pricing.html#key-takeaways",
+    "title": "Why Does the Same Starbucks Drink Have Different Prices Around the World?",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\n\n\n\n🌍 Global Markets Differ\n\nCustomers around the world have different needs, preferences, purchasing power, and consumption habits.\n\n\n\n☕ Value Is Perceived\n\nConsumers are not only buying coffee—they are buying convenience, experience, and brand value.\n\n\n\n📈 Pricing Is Strategic\n\nSuccessful companies adapt prices to local market conditions rather than using one global price.\n\n\n\n\n💡 Final Message\nThe same Starbucks drink can command very different prices across markets because customers perceive different levels of value and utility.\n\nSuccessful pricing is not about what a product costs to make— it is about what customers believe it is worth."
+  },
+  {
+    "objectID": "presentation/Zhang_Wenwen-starbucks_pricing.html#alternative-explanations",
+    "href": "presentation/Zhang_Wenwen-starbucks_pricing.html#alternative-explanations",
+    "title": "Why Does the Same Starbucks Drink Have Different Prices Around the World?",
+    "section": "Alternative Explanations",
+    "text": "Alternative Explanations\n\nWhy cost and culture are not the main explanations.\n\n\n\n\n\n💲 Production Cost\n\n\n\n\nCommon explanation: Prices are higher because it costs more to operate in some countries.\n\nWhy it is incomplete: Costs vary, but cost differences alone are unlikely to explain why the same latte can be more than 5× more expensive across markets.\n\n\nCost matters, but it does not fully explain the pricing gap.\n\n\n\n\n🌍 Culture\n\n\n\n\nCommon explanation: Different coffee cultures lead to different prices.\n\nWhy it is incomplete: Culture shapes preferences, but it affects pricing indirectly through how customers perceive value and how much they are willing to pay.\n\n\nCulture matters, but it works through perceived value.\n\n\n\n\n\n💡 Key Insight: Cost and culture help explain the context, but they are not enough by themselves. The stronger explanation is how each market changes what customers are willing to pay."
+  },
+  {
+    "objectID": "presentation/Zhang_Wenwen-starbucks_pricing.html#limits-of-common-explanations",
+    "href": "presentation/Zhang_Wenwen-starbucks_pricing.html#limits-of-common-explanations",
+    "title": "Why Does the Same Starbucks Drink Have Different Prices Around the World?",
+    "section": "Limits of Common Explanations",
+    "text": "Limits of Common Explanations\n\nWhy cost and culture alone cannot fully explain global price differences.\n\n\n\n\n\n💲 Production Cost\n\n\n\n\nCommon belief: Higher costs lead to higher prices.\n\nReality: Operating costs vary across countries, but Starbucks prices can differ by more than 5×, far beyond typical cost differences.\n\nConclusion: Costs matter, but they cannot fully explain global price differences.\n\n\n\n🌍 Culture\n\n\n\n\nCommon belief: Different coffee cultures lead to different prices.\n\nReality: Culture influences coffee habits, but pricing is affected more directly by customer value and willingness to pay.\n\nConclusion: Culture matters, but mainly through perceived value.\n\n\n\n\n💲 Cost    🌍 Culture  ↓  ⭐ Customer Value  ↓  💵 Willingness to Pay  ↓  📈 Pricing\n\n\n\n💡 Key Insight:\nCost and culture influence pricing indirectly. Customer value remains the most direct driver of willingness to pay and pricing decisions."
+  },
+  {
+    "objectID": "presentation/Zhang_Wenwen-starbucks_pricing.html#why-not-cost-or-culture",
+    "href": "presentation/Zhang_Wenwen-starbucks_pricing.html#why-not-cost-or-culture",
+    "title": "Why Does the Same Starbucks Drink Have Different Prices Around the World?",
+    "section": "Why Not Cost or Culture?",
+    "text": "Why Not Cost or Culture?\n\nCommon explanations that cannot fully account for global Starbucks pricing.\n\n\n\n\n💲 Why Not Cost?\n\n\n\n\n\n\nMaterial costs, such as coffee beans, milk, and packaging, represent only a small portion of the final price.\n\n\nLabor, rent, and operating costs vary across countries, but firms can partly offset these differences through store format, location strategy, and franchising.\n\n\nThese cost differences are unlikely to explain why Starbucks prices vary by more than 5× across markets.\n\n\n\n☕ Turkey $1.31 ↔︎ Switzerland $7.17\n 5.5× Price Difference \n\n\n✓ Key Point: Prices differ far more than costs.\n\n\n\n\n🌍 Why Not Culture?\n\n\n\n\n\n\nCulture influences local preferences and product adaptation, such as seasonal drinks or region-specific menu items.\n\n\nStarbucks’ core products, including lattes and Americanos, are highly standardized worldwide.\n\n\nTurkey and Switzerland both have strong coffee traditions, yet Starbucks prices differ dramatically.\n\n\nCulture affects whether consumers buy Starbucks, but differences in customer value and willingness to pay play a more direct role in determining price.\n\n\n\n✓ Key Point: Culture influences demand, but customer value is a more direct driver of pricing.\n\n\n\n\n\n\n\n💡 Key Insight:\nCost and culture help explain local market conditions, but they cannot fully account for large global price differences.\nCustomer value is the most direct driver of willingness to pay—and therefore pricing decisions."
+  },
+  {
+    "objectID": "posts/hw5/hw5_questions.html",
+    "href": "posts/hw5/hw5_questions.html",
+    "title": "Key Drivers Analysis",
+    "section": "",
+    "text": "import pandas as pd\nimport numpy as np\nimport math\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.ensemble import RandomForestRegressor\nfrom itertools import combinations\n\ndf = pd.read_csv(\"data_for_drivers_analysis.csv\")\n\ny_col = \"satisfaction\"\nx_cols = [\"trust\", \"build\", \"differs\", \"easy\", \"appealing\",\n          \"rewarding\", \"popular\", \"service\", \"impact\"]\n\nX = df[x_cols]\ny = df[y_col]"
+  },
+  {
+    "objectID": "posts/hw5/hw5_questions.html#load-data",
+    "href": "posts/hw5/hw5_questions.html#load-data",
+    "title": "Key Drivers Analysis",
+    "section": "",
+    "text": "import pandas as pd\nimport numpy as np\nimport math\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.ensemble import RandomForestRegressor\nfrom itertools import combinations\n\ndf = pd.read_csv(\"data_for_drivers_analysis.csv\")\n\ny_col = \"satisfaction\"\nx_cols = [\"trust\", \"build\", \"differs\", \"easy\", \"appealing\",\n          \"rewarding\", \"popular\", \"service\", \"impact\"]\n\nX = df[x_cols]\ny = df[y_col]"
+  },
+  {
+    "objectID": "posts/hw5/hw5_questions.html#variable-importance-analysis",
+    "href": "posts/hw5/hw5_questions.html#variable-importance-analysis",
+    "title": "Key Drivers Analysis",
+    "section": "Variable importance analysis",
+    "text": "Variable importance analysis\n\n\n\n\n\n\n\n\n\nPearson Correlation\nStandardized Beta\nDrop-One Usefulness\nShapley Value\nJohnson Relative Weight\nRandom Forest Importance\n\n\n\n\nimpact\n0.254539\n0.128422\n0.011203\n0.023582\n0.023946\n0.138483\n\n\ntrust\n0.255706\n0.115752\n0.008243\n0.021611\n0.021623\n0.157239\n\n\nservice\n0.251098\n0.088390\n0.004674\n0.018405\n0.018134\n0.130543\n\n\neasy\n0.212985\n0.021970\n0.000289\n0.009288\n0.008982\n0.098278\n\n\nappealing\n0.207997\n0.033835\n0.000710\n0.009161\n0.009099\n0.084914\n\n\ndiffers\n0.184801\n0.027847\n0.000550\n0.007291\n0.007594\n0.091313\n\n\nbuild\n0.191896\n0.019979\n0.000266\n0.007191\n0.007217\n0.099373\n\n\nrewarding\n0.194561\n0.005067\n0.000016\n0.006840\n0.006538\n0.103460\n\n\npopular\n0.171425\n0.016616\n0.000204\n0.005642\n0.005878\n0.096397\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPearson Correlation\nStandardized Beta\nDrop-One Usefulness\nShapley Value\nJohnson Relative Weight\nRandom Forest Importance\n\n\n\n\nimpact\n0.255\n0.128\n0.011\n0.024\n0.024\n0.138\n\n\ntrust\n0.256\n0.116\n0.008\n0.022\n0.022\n0.157\n\n\nservice\n0.251\n0.088\n0.005\n0.018\n0.018\n0.131\n\n\neasy\n0.213\n0.022\n0.000\n0.009\n0.009\n0.098\n\n\nappealing\n0.208\n0.034\n0.001\n0.009\n0.009\n0.085\n\n\ndiffers\n0.185\n0.028\n0.001\n0.007\n0.008\n0.091\n\n\nbuild\n0.192\n0.020\n0.000\n0.007\n0.007\n0.099\n\n\nrewarding\n0.195\n0.005\n0.000\n0.007\n0.007\n0.103\n\n\npopular\n0.171\n0.017\n0.000\n0.006\n0.006\n0.096"
+  },
+  {
+    "objectID": "posts/hw5/hw5_questions.html#interpretation",
+    "href": "posts/hw5/hw5_questions.html#interpretation",
+    "title": "Key Drivers Analysis",
+    "section": "Interpretation",
+    "text": "Interpretation\nThe six variable-importance measures produce broadly consistent results. Across most methods, impact, trust, and service emerge as the strongest predictors of customer satisfaction.\nAmong all variables, impact receives the highest Shapley value and Johnson relative weight, indicating that it contributes the most to explaining variation in satisfaction. This result suggests that customers who perceive the brand as having a meaningful impact tend to report higher satisfaction levels.\nTrust also ranks highly across multiple measures, including Pearson correlation, standardized regression coefficients, and random forest importance. The consistency of these results highlights the central role of trust in shaping customer satisfaction.\nSimilarly, service performs strongly across nearly all methods, suggesting that customer experience remains an important determinant of satisfaction.\nAt the other end of the ranking, variables such as popular, rewarding, and build receive comparatively lower importance scores. While these factors are positively related to satisfaction, they appear to contribute less to explaining differences in satisfaction than impact, trust, and service.\nOverall, the results suggest that customer satisfaction is driven primarily by perceptions of impact, trust, and service quality, with other brand attributes playing a more limited role."
   }
 ]

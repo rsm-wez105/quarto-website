@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Wenwen Zhang">
+<meta name="dcterms.date" content="2026-06-06">
 
-<title>Blog – Wenwen Zhang</title>
+<title>Key Drivers Analysis – Wenwen Zhang</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,25 +28,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,67 +72,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
-    };
 
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -142,7 +87,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Wenwen Zhang</span>
     </a>
   </div>
@@ -153,19 +98,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resume.html"> 
+    <a class="nav-link" href="../../resume.html"> 
 <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -179,22 +124,42 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#load-data" id="toc-load-data" class="nav-link active" data-scroll-target="#load-data">Load data</a></li>
+  <li><a href="#variable-importance-analysis" id="toc-variable-importance-analysis" class="nav-link" data-scroll-target="#variable-importance-analysis">Variable importance analysis</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
+<h1 class="title">Key Drivers Analysis</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Wenwen Zhang </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 6, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -204,155 +169,235 @@ window.Quarto = {
 </header>
 
 
+<section id="load-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-data">Load data</h2>
+</section>
+<section id="variable-importance-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="variable-importance-analysis">Variable importance analysis</h2>
+<div id="c432f610" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Pearson Correlation</th>
+<th data-quarto-table-cell-role="th">Standardized Beta</th>
+<th data-quarto-table-cell-role="th">Drop-One Usefulness</th>
+<th data-quarto-table-cell-role="th">Shapley Value</th>
+<th data-quarto-table-cell-role="th">Johnson Relative Weight</th>
+<th data-quarto-table-cell-role="th">Random Forest Importance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">impact</th>
+<td>0.254539</td>
+<td>0.128422</td>
+<td>0.011203</td>
+<td>0.023582</td>
+<td>0.023946</td>
+<td>0.138483</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">trust</th>
+<td>0.255706</td>
+<td>0.115752</td>
+<td>0.008243</td>
+<td>0.021611</td>
+<td>0.021623</td>
+<td>0.157239</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">service</th>
+<td>0.251098</td>
+<td>0.088390</td>
+<td>0.004674</td>
+<td>0.018405</td>
+<td>0.018134</td>
+<td>0.130543</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">easy</th>
+<td>0.212985</td>
+<td>0.021970</td>
+<td>0.000289</td>
+<td>0.009288</td>
+<td>0.008982</td>
+<td>0.098278</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">appealing</th>
+<td>0.207997</td>
+<td>0.033835</td>
+<td>0.000710</td>
+<td>0.009161</td>
+<td>0.009099</td>
+<td>0.084914</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">differs</th>
+<td>0.184801</td>
+<td>0.027847</td>
+<td>0.000550</td>
+<td>0.007291</td>
+<td>0.007594</td>
+<td>0.091313</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">build</th>
+<td>0.191896</td>
+<td>0.019979</td>
+<td>0.000266</td>
+<td>0.007191</td>
+<td>0.007217</td>
+<td>0.099373</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">rewarding</th>
+<td>0.194561</td>
+<td>0.005067</td>
+<td>0.000016</td>
+<td>0.006840</td>
+<td>0.006538</td>
+<td>0.103460</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">popular</th>
+<td>0.171425</td>
+<td>0.016616</td>
+<td>0.000204</td>
+<td>0.005642</td>
+<td>0.005878</td>
+<td>0.096397</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="31cfb340" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1775977200000" data-listing-file-modified-sort="1779768926824" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1432">
-<div class="thumbnail"><a href="./posts/ab-test/index.html" class="no-external">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Pearson Correlation</th>
+<th data-quarto-table-cell-role="th">Standardized Beta</th>
+<th data-quarto-table-cell-role="th">Drop-One Usefulness</th>
+<th data-quarto-table-cell-role="th">Shapley Value</th>
+<th data-quarto-table-cell-role="th">Johnson Relative Weight</th>
+<th data-quarto-table-cell-role="th">Random Forest Importance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">impact</th>
+<td>0.255</td>
+<td>0.128</td>
+<td>0.011</td>
+<td>0.024</td>
+<td>0.024</td>
+<td>0.138</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">trust</th>
+<td>0.256</td>
+<td>0.116</td>
+<td>0.008</td>
+<td>0.022</td>
+<td>0.022</td>
+<td>0.157</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">service</th>
+<td>0.251</td>
+<td>0.088</td>
+<td>0.005</td>
+<td>0.018</td>
+<td>0.018</td>
+<td>0.131</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">easy</th>
+<td>0.213</td>
+<td>0.022</td>
+<td>0.000</td>
+<td>0.009</td>
+<td>0.009</td>
+<td>0.098</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">appealing</th>
+<td>0.208</td>
+<td>0.034</td>
+<td>0.001</td>
+<td>0.009</td>
+<td>0.009</td>
+<td>0.085</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">differs</th>
+<td>0.185</td>
+<td>0.028</td>
+<td>0.001</td>
+<td>0.007</td>
+<td>0.008</td>
+<td>0.091</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">build</th>
+<td>0.192</td>
+<td>0.020</td>
+<td>0.000</td>
+<td>0.007</td>
+<td>0.007</td>
+<td>0.099</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">rewarding</th>
+<td>0.195</td>
+<td>0.005</td>
+<td>0.000</td>
+<td>0.007</td>
+<td>0.007</td>
+<td>0.103</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">popular</th>
+<td>0.171</td>
+<td>0.017</td>
+<td>0.000</td>
+<td>0.006</td>
+<td>0.006</td>
+<td>0.096</td>
+</tr>
+</tbody>
+</table>
 
-<p class="card-img-top"><img loading='lazy' src="posts/ab-test/index_files/figure-html/cell-2-output-1.png"  class="thumbnail-image card-img"/></p>
+</div>
+</div>
+</div>
+</section>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<p>The six variable-importance measures produce broadly consistent results. Across most methods, <strong>impact</strong>, <strong>trust</strong>, and <strong>service</strong> emerge as the strongest predictors of customer satisfaction.</p>
+<p>Among all variables, <strong>impact</strong> receives the highest Shapley value and Johnson relative weight, indicating that it contributes the most to explaining variation in satisfaction. This result suggests that customers who perceive the brand as having a meaningful impact tend to report higher satisfaction levels.</p>
+<p><strong>Trust</strong> also ranks highly across multiple measures, including Pearson correlation, standardized regression coefficients, and random forest importance. The consistency of these results highlights the central role of trust in shaping customer satisfaction.</p>
+<p>Similarly, <strong>service</strong> performs strongly across nearly all methods, suggesting that customer experience remains an important determinant of satisfaction.</p>
+<p>At the other end of the ranking, variables such as <strong>popular</strong>, <strong>rewarding</strong>, and <strong>build</strong> receive comparatively lower importance scores. While these factors are positively related to satisfaction, they appear to contribute less to explaining differences in satisfaction than impact, trust, and service.</p>
+<p>Overall, the results suggest that customer satisfaction is driven primarily by perceptions of impact, trust, and service quality, with other brand attributes playing a more limited role.</p>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/ab-test/index.html" class="no-external">A/B Testing a Call to Action</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/ab-test/index.html" class="no-external">Simulating Key Ideas from Classical Frequentist Statistics</a>
-</div>
-<div class="delink listing-description"><a href="./posts/ab-test/index.html" class="no-external">
-In this post, I look at a simple A/B test for a call-to-action (CTA) on a website. The idea is to see which version of the CTA gets more people to sign up.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/ab-test/index.html" class="no-external">
-<div class="listing-date">
-Apr 12, 2026
-</div>
-<div class="listing-author">
-Wenwen Zhang
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1780729200000" data-listing-file-modified-sort="1780793456574" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="590">
-<div class="thumbnail"><a href="./posts/hw5/hw5_questions.html" class="no-external">
 
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</section>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/hw5/hw5_questions.html" class="no-external">Key Drivers Analysis</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/hw5/hw5_questions.html" class="no-external"></a>
-</div>
-<div class="delink listing-description"><a href="./posts/hw5/hw5_questions.html" class="no-external">
-The six variable-importance measures produce broadly consistent results. Across most methods, <strong>impact</strong>, <strong>trust</strong>, and <strong>service</strong> emerge as the strongest predictors of customer…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/hw5/hw5_questions.html" class="no-external">
-<div class="listing-date">
-Jun 6, 2026
-</div>
-<div class="listing-author">
-Wenwen Zhang
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1779692400000" data-listing-file-modified-sort="1779773827942" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3437">
-<div class="thumbnail"><a href="./posts/hw4/index.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts/hw4/index_files/figure-html/cell-9-output-1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/hw4/index.html" class="no-external">MaxDiff Analysis of MSBA Class Preferences</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/hw4/index.html" class="no-external">Counts, MLE, and Bayesian Estimation of the MNL Model</a>
-</div>
-<div class="delink listing-description"><a href="./posts/hw4/index.html" class="no-external">
-MaxDiff, or Best-Worst Scaling, is a survey method used to measure relative preferences between items. Instead of asking respondents to rate items on a numeric scale…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/hw4/index.html" class="no-external">
-<div class="listing-date">
-May 25, 2026
-</div>
-<div class="listing-author">
-Wenwen Zhang
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1776754800000" data-listing-file-modified-sort="1779768926825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="650">
-<div class="thumbnail"><a href="./posts/hw2/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/hw2/index.html" class="no-external">Minimum Wage and Employment: A Replication of Card and Krueger (1994)</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/hw2/index.html" class="no-external">A Difference-in-Differences Analysis</a>
-</div>
-<div class="delink listing-description"><a href="./posts/hw2/index.html" class="no-external">
-In this post, I replicate part of Card and Krueger (1994), which looks at how a minimum wage increase affects employment in fast-food restaurants.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/hw2/index.html" class="no-external">
-<div class="listing-date">
-Apr 21, 2026
-</div>
-<div class="listing-author">
-Wenwen Zhang
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1778655600000" data-listing-file-modified-sort="1779768926826" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1179">
-<div class="thumbnail"><a href="./posts/hw3/index.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts/hw3/index_files/figure-html/cell-3-output-1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/hw3/index.html" class="no-external">Poisson Regression and Maximum Likelihood Estimation</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/hw3/index.html" class="no-external">A Case Study of Blueprinty’s Software and Patent Awards</a>
-</div>
-<div class="delink listing-description"><a href="./posts/hw3/index.html" class="no-external">
-Blueprinty is a company that provides software designed to help engineering firms prepare patent applications. The company claims that using its software improves the…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/hw3/index.html" class="no-external">
-<div class="listing-date">
-May 13, 2026
-</div>
-<div class="listing-author">
-Wenwen Zhang
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

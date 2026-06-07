@@ -1,0 +1,460 @@
+---
+title: "Why Does the Same Starbucks Drink Have Different Prices Around the World?"
+subtitle: "A Global Pricing Perspective"
+author: "Wenwen Zhang"
+
+format:
+  revealjs:
+    embed-resources: true
+    theme: simple
+    slide-number: true
+    include-in-header:
+      text: |
+        <style>
+        .reveal {
+          font-family: "Times New Roman", Times, serif;
+        }
+        .reveal h1, .reveal h2, .reveal h3 {
+          font-family: "Times New Roman", Times, serif;
+        }
+        .reveal .title {
+          font-size: 1.6em !important;
+        }
+        .reveal .subtitle {
+          font-size: 0.7em !important;
+        }
+        .reveal .author {
+          font-size: 0.6em !important;
+        }
+        /* ===== GLOBAL DESIGN ===== */
+
+        .reveal {
+        color: #111111;
+        }
+
+        .reveal h2 {
+        font-size: 1.45em;
+        margin-bottom: 0.35em;
+        }
+
+        .reveal p,
+        .reveal li {
+        line-height: 1.35;
+        }
+
+        .reveal img {
+        border-radius: 10px;
+        }
+
+        .reveal .slide-number {
+        color: #666666;
+        font-size: 0.45em;
+        }
+
+        .reveal .progress span {
+        background: #064d2f;
+        }
+        .reveal div[style*="background:#eef8f1"] {
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        }
+        .reveal {
+        background: #dceee5;
+        }
+        .reveal::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background: #064d2f;
+        z-index: 1;
+        }
+        /* Starbucks logo in top-right corner */
+
+        .reveal::after {
+          content: "";
+          position: fixed;
+
+          top: 35px;
+          right: 35px;
+
+          width: 200px;
+          height: 200px;
+
+          background-image: url("starbucks-logo.jpg");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+
+          opacity: 0.08;
+
+          pointer-events: none;
+          z-index: 999;
+        }
+        </style>
+---
+
+
+## A Global Pricing Puzzle
+
+<div style="display:grid; grid-template-columns:72% 28%; gap:24px; align-items:start; margin-top:-10px;">
+
+<div>
+
+
+<img src="01_Big-Bucks-Coffee_Map_World_Hi-RES-1.png" style="width:100%;">
+</div>
+
+<div style="display:flex; flex-direction:column; gap:18px; margin-top:22px;">
+
+<div style="background:#eef8f1; border:1px solid #c9dfd0; border-radius:18px; padding:14px 18px; font-size:0.55em; color:#064d2f; line-height:1.35;">
+☕ <b>Tall Latte Prices</b><br>
+<span style="color:#c9dfd0; letter-spacing:-2px;">━━━━━━━━━━━━━━</span><br>
+🇹🇷 Turkey: <b>$1.31</b><br>
+🇺🇸 USA: <b>$3.26</b><br>
+🇨🇳 China: <b>$4.23</b><br>
+🇨🇭 Switzerland: <b>$7.17</b>
+</div>
+
+<div style="background:#eef8f1; border:1px solid #c9dfd0; border-radius:18px; padding:14px 18px; font-size:0.55em; color:#064d2f; line-height:1.35;">
+💡 <b>Key Observation:</b><br>
+<span style="color:#c9dfd0; letter-spacing:-2px;">━━━━━━━━━━━━━━</span><br>
+The same Starbucks Tall Latte can cost more than <b>five times as much</b> across countries.
+</div>
+
+</div>
+
+</div>
+
+---
+
+## Why Are Prices Different?
+
+<div style="text-align:center; margin-top:-45px; color:#064d2f; font-size:0.9em;">
+━━━━━━━━━━━━
+</div>
+
+<div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; margin-top:-30px;">
+
+<div style="font-size:0.48em;">
+<h3 style="text-align:center;margin-top:0px;">💰 Income Levels</h3>
+<img src="income.png" style="width:100%; height:370px; object-fit:cover;">
+<h3>GDP per capita (2023)</h3>
+<p>• Switzerland ≈ $99,000<br>
+• Turkey ≈ $13,000</p>
+<p>Higher incomes support higher willingness to pay.</p>
+</div>
+
+<div style="font-size:0.48em;">
+<h3 style="text-align:center;margin-top:0px;">🏪 Competition</h3>
+<img src="competition.png" style="width:100%; height:370px; object-fit:cover;">
+<h3>Starbucks vs. Luckin Coffee</h3>
+<p>Local competitors can limit pricing power.</p>
+</div>
+
+<div style="font-size:0.48em;">
+<h3 style="text-align:center;margin-top:0px;">⭐ Brand Positioning</h3>
+<img src="brand.png" style="width:100%; height:370px; object-fit:cover;">
+<h3>Starbucks Reserve</h3>
+<p>Premium positioning can increase willingness to pay.</p>
+</div>
+
+</div>
+
+<div style="
+  margin:-10px auto 0 auto;
+  width:95%;
+  background:#eef8f1;
+  border:1px solid #c9dfd0;
+  border-radius:18px;
+  padding:8px 18px;
+  font-size:0.4em;
+  text-align:center;
+">
+💡 <b>Key idea:</b> Income, competition, and brand positioning are key drivers of customer value, which in turn shapes willingness to pay.
+</div>
+
+---
+
+## What Can Marketers Learn?
+
+<div style="text-align:center;color:#064d2f;font-size:0.44em;margin-top:-8px;">
+Global pricing should match local customer value, not simply production cost.
+</div>
+
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:8px;">
+
+<div style="background:#eef8f1;border:1px solid #c9dfd0;border-radius:16px;box-shadow:0 7px 18px rgba(0,0,0,0.08);padding:12px 16px;font-size:0.38em;color:#064d2f;text-align:center;line-height:1.32;">
+<div style="font-size:1.4em;">💰</div>
+<h3 style="margin:4px 0;">One Price Does Not Fit All</h3>
+Consumers differ in purchasing power and willingness to pay.
+</div>
+
+<div style="background:#eef8f1;border:1px solid #c9dfd0;border-radius:16px;box-shadow:0 7px 18px rgba(0,0,0,0.08);padding:12px 16px;font-size:0.38em;color:#064d2f;text-align:center;line-height:1.32;">
+<div style="font-size:1.4em;">🏪</div>
+<h3 style="margin:4px 0;">Competition Matters</h3>
+Local rivals can limit pricing power and require promotions.
+</div>
+
+<div style="background:#eef8f1;border:1px solid #c9dfd0;border-radius:16px;box-shadow:0 7px 18px rgba(0,0,0,0.08);padding:12px 16px;font-size:0.38em;color:#064d2f;text-align:center;line-height:1.32;">
+<div style="font-size:1.4em;">⭐</div>
+<h3 style="margin:4px 0;">Brand Creates Pricing Power</h3>
+Premium brand perception allows firms to charge higher prices.
+</div>
+
+</div>
+
+<br>
+
+<div style="
+background:#eef8f1;
+border:2px solid #c9dfd0;
+border-radius:18px;
+box-shadow:0 8px 22px rgba(0,0,0,0.08);
+padding:20px;
+width:90%;
+margin:-10px auto 0 auto;
+text-align:center;
+font-size:0.62em;
+color:#064d2f;
+font-weight:bold;
+">
+Customer Value &nbsp; → &nbsp; Willingness to Pay &nbsp; → &nbsp; Pricing Decision
+</div>
+
+<br>
+
+<div style="
+background:#eef8f1;
+border-left:8px solid #064d2f;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+padding:14px 22px;
+font-size:0.40em;
+color:#064d2f;
+width:88%;
+margin:-10px auto 0 auto;
+line-height:1.4;
+">
+
+📌 <b>Managerial Implication:</b>
+
+Successful global pricing requires firms to adapt prices
+to local customer value rather than applying
+a single global price worldwide.
+
+</div>
+---
+
+## Why Not Cost or Culture?
+
+<div style="text-align:center;color:#064d2f;font-size:0.44em;margin-top:-8px;">
+Common explanations that cannot fully account for global Starbucks pricing.
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:2px;">
+
+<div style="
+background:#eef8f1;
+border:1px solid #c9dfd0;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+padding:14px 18px;
+font-size:0.38em;
+color:#064d2f;
+line-height:1.35;
+">
+
+<h3 style="margin:0 0 8px 0;text-align:center;">
+💲 Why Not Cost?
+</h3>
+
+<div style="height:2px;background:#c9dfd0;width:75%;margin:6px auto 10px auto;"></div>
+
+<ul style="margin-top:0;margin-bottom:8px;">
+<li>Material costs, such as coffee beans, milk, and packaging, represent only a small portion of the final price.</li>
+
+<li>Labor, rent, and operating costs vary across countries, but firms can partly offset these differences through store format, location strategy, and franchising.</li>
+
+<li>These cost differences are unlikely to explain why Starbucks prices vary by more than 5× across markets.</li>
+</ul>
+
+<div style="
+background:#ffffff;
+border:1px dashed #c9dfd0;
+border-radius:10px;
+padding:8px 10px;
+text-align:center;
+margin-top:8px;
+font-weight:bold;
+">
+
+☕ Turkey $1.31 ↔ Switzerland $7.17
+
+<span style="font-size:1.15em;">
+5.5× Price Difference
+</span>
+
+</div>
+
+<div style="
+background:#e7f3ea;
+border-radius:10px;
+padding:8px 10px;
+margin-top:8px;
+font-weight:bold;
+">
+
+✓ Key Point: Prices differ far more than costs.
+
+</div>
+
+</div>
+
+<div style="
+background:#eef8f1;
+border:1px solid #c9dfd0;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+padding:14px 18px;
+font-size:0.38em;
+color:#064d2f;
+line-height:1.35;
+">
+
+<h3 style="margin:0 0 8px 0;text-align:center;">
+🌍 Why Not Culture?
+</h3>
+
+<div style="height:2px;background:#c9dfd0;width:75%;margin:6px auto 10px auto;"></div>
+
+<ul style="margin-top:0;margin-bottom:8px;">
+
+<li>Culture influences local preferences and product adaptation, such as seasonal drinks or region-specific menu items.</li>
+
+<li>Starbucks' core products, including lattes and Americanos, are highly standardized worldwide.</li>
+
+<li>Turkey and Switzerland both have strong coffee traditions, yet Starbucks prices differ dramatically.</li>
+
+<li>Culture affects whether consumers buy Starbucks, but differences in customer value and willingness to pay play a more direct role in determining price.</li>
+
+</ul>
+
+<div style="
+background:#e7f3ea;
+border-radius:10px;
+padding:8px 10px;
+margin-top:8px;
+font-weight:bold;
+">
+
+✓ Key Point: Culture influences demand, but customer value is a more direct driver of pricing.
+
+</div>
+
+</div>
+
+</div>
+
+<div style="height:8px;"></div>
+
+<div style="
+background:#eef8f1;
+border-left:8px solid #064d2f;
+border-radius:14px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+padding:12px 20px;
+width:88%;
+margin:0 auto;
+font-size:0.39em;
+color:#064d2f;
+line-height:1.42;
+">
+
+💡 <b>Key Insight:</b>
+
+Cost and culture help explain local market conditions, but they cannot fully account for large global price differences.
+
+
+<b>Customer value is the most direct driver of willingness to pay—and therefore pricing decisions.</b>
+
+</div>
+---
+
+## Key Takeaways
+
+<br>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+
+<div style="background:#eef8f1;border:1px solid #c9dfd0;border-radius:16px;padding:18px;text-align:center;font-size:0.45em;color:#064d2f;line-height:1.4;">
+<h3>🌍 Global Markets Differ</h3>
+
+Customers around the world have different needs,
+preferences, purchasing power,
+and consumption habits.
+
+</div>
+
+<div style="background:#eef8f1;border:1px solid #c9dfd0;border-radius:16px;padding:18px;text-align:center;font-size:0.45em;color:#064d2f;line-height:1.4;">
+<h3>☕ Value Is Perceived</h3>
+
+Consumers are not only buying coffee—they are buying convenience, experience, and brand value.
+
+</div>
+
+<div style="background:#eef8f1;border:1px solid #c9dfd0;border-radius:16px;padding:18px;text-align:center;font-size:0.45em;color:#064d2f;line-height:1.4;">
+<h3>📈 Pricing Is Strategic</h3>
+
+Successful companies adapt prices to local market conditions rather than using one global price.
+
+</div>
+
+</div>
+
+<br>
+
+<div style="
+background:#eef8f1;
+border-left:6px solid #064d2f;
+border-radius:10px;
+padding:14px 20px;
+font-size:0.48em;
+color:#064d2f;
+width:88%;
+margin:0 auto;
+">
+
+💡 <b>Final Message</b>
+
+The same Starbucks drink can command very different prices across markets because customers perceive different levels of value and utility.
+
+<p style="font-weight:bold;font-size:1.1em;">
+Successful pricing is not about what a product costs to make—
+it is about what customers believe it is worth.
+</p>
+
+</div>
+
+---
+
+<div style="
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+">
+
+<h1 style="
+font-size:3em;
+color:#064d2f;
+margin-bottom:20px;
+">
+Thank You!
+</h1>
+
+</div>

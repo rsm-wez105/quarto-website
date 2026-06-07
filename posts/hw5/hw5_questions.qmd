@@ -1,0 +1,136 @@
+---
+title: "Key Drivers Analysis"
+author: "Wenwen Zhang"
+date: today
+---
+
+
+## Load data
+
+```{python}
+#| echo: false
+import pandas as pd
+import numpy as np
+import math
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from itertools import combinations
+
+df = pd.read_csv("data_for_drivers_analysis.csv")
+
+y_col = "satisfaction"
+x_cols = ["trust", "build", "differs", "easy", "appealing",
+          "rewarding", "popular", "service", "impact"]
+
+X = df[x_cols]
+y = df[y_col]
+```
+
+
+## Variable importance analysis
+```{python}
+#| echo: false
+# 1. Pearson correlations
+pearson = X.corrwith(y).abs()
+
+# 2. Standardized regression coefficients
+scaler_x = StandardScaler()
+scaler_y = StandardScaler()
+
+X_std = scaler_x.fit_transform(X)
+y_std = scaler_y.fit_transform(y.values.reshape(-1, 1)).ravel()
+
+lm = LinearRegression()
+lm.fit(X_std, y_std)
+std_beta = pd.Series(np.abs(lm.coef_), index=x_cols)
+
+# Helper function for R-squared
+def r2_score_for(cols):
+    if len(cols) == 0:
+        return 0
+    model = LinearRegression()
+    model.fit(X[list(cols)], y)
+    return model.score(X[list(cols)], y)
+
+full_r2 = r2_score_for(x_cols)
+
+# 3. Drop-one usefulness
+drop_one = {}
+for col in x_cols:
+    remaining = [c for c in x_cols if c != col]
+    drop_one[col] = full_r2 - r2_score_for(remaining)
+drop_one = pd.Series(drop_one)
+
+# 4. Shapley values
+shapley = {col: 0 for col in x_cols}
+p = len(x_cols)
+
+for col in x_cols:
+    others = [c for c in x_cols if c != col]
+    value = 0
+    
+    for k in range(p):
+        for subset in combinations(others, k):
+            subset = list(subset)
+            with_col = subset + [col]
+            
+            marginal = r2_score_for(with_col) - r2_score_for(subset)
+            weight = math.factorial(k) * math.factorial(p-k-1) / math.factorial(p)
+            value += weight * marginal
+    
+    shapley[col] = value
+
+shapley = pd.Series(shapley)
+
+# 5. Johnson's relative weights
+Rxx = np.corrcoef(X_std, rowvar=False)
+Rxy = np.corrcoef(X_std.T, y_std)[-1, :-1]
+
+eigvals, eigvecs = np.linalg.eigh(Rxx)
+eigvals = np.maximum(eigvals, 0)
+
+lambda_mat = eigvecs @ np.diag(np.sqrt(eigvals)) @ eigvecs.T
+beta_star = np.linalg.inv(lambda_mat) @ Rxy
+raw_weights = (lambda_mat ** 2) @ (beta_star ** 2)
+
+johnson = pd.Series(raw_weights, index=x_cols)
+
+# 6. Random forest importance
+rf = RandomForestRegressor(n_estimators=500, random_state=123)
+rf.fit(X, y)
+rf_importance = pd.Series(rf.feature_importances_, index=x_cols)
+
+# Final table
+importance_table = pd.DataFrame({
+    "Pearson Correlation": pearson,
+    "Standardized Beta": std_beta,
+    "Drop-One Usefulness": drop_one,
+    "Shapley Value": shapley,
+    "Johnson Relative Weight": johnson,
+    "Random Forest Importance": rf_importance
+})
+
+importance_table = importance_table.sort_values("Shapley Value", ascending=False)
+
+importance_table
+```
+
+```{python}
+#| echo: false
+importance_table.round(3)
+```
+
+## Interpretation
+
+The six variable-importance measures produce broadly consistent results. Across most methods, **impact**, **trust**, and **service** emerge as the strongest predictors of customer satisfaction.
+
+Among all variables, **impact** receives the highest Shapley value and Johnson relative weight, indicating that it contributes the most to explaining variation in satisfaction. This result suggests that customers who perceive the brand as having a meaningful impact tend to report higher satisfaction levels.
+
+**Trust** also ranks highly across multiple measures, including Pearson correlation, standardized regression coefficients, and random forest importance. The consistency of these results highlights the central role of trust in shaping customer satisfaction.
+
+Similarly, **service** performs strongly across nearly all methods, suggesting that customer experience remains an important determinant of satisfaction.
+
+At the other end of the ranking, variables such as **popular**, **rewarding**, and **build** receive comparatively lower importance scores. While these factors are positively related to satisfaction, they appear to contribute less to explaining differences in satisfaction than impact, trust, and service.
+
+Overall, the results suggest that customer satisfaction is driven primarily by perceptions of impact, trust, and service quality, with other brand attributes playing a more limited role.
